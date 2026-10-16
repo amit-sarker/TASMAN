@@ -1,0 +1,201 @@
+difficulty: hard
+
+design:
+  pool_options:
+    I1: [I1o1, I1o2]
+    I2: [I2o2, I2o4]
+    I3: [I3o1, I3o4]
+    I4: [I4o1, I4o3]
+    I5: [I5o2]
+  swing:
+    seesaw_issue: I3
+    swing_margin_band: [2, 8]
+    comfort_min: 12
+    hb_seesaw_favorite: { skydrop: I3o4, city_transport: I3o1 }
+    swing_deal_counts: { skydrop: 5, city_transport: 5 }
+
+project:
+  name: "Warehouse Electrification Rollout"
+  shared_description: |
+    The parties are deciding whether to authorize an electrified warehouse and charging-yard logistics plan. The agreement must settle five issues governing the charging hubs. Each party has private tradeoffs and its own preferred package, so a viable agreement requires a narrow coalition around one of the few compromise packages that give every party enough to say yes.
+  parties:
+    - id: skydrop
+      display_name: "SkyDrop Logistics"
+    - id: city_transport
+      display_name: "Chicago Department of Transportation"
+    - id: privacy_coalition
+      display_name: "Digital Rights and Neighborhood Coalition"
+    - id: couriers_guild
+      display_name: "Chicago Couriers' Guild"
+    - id: aviation_safety
+      display_name: "Civil Aviation Safety Board"
+
+issues:
+  - id: I1
+    name: "Environmental and Noise Controls"
+    description: |
+      How the charging hubs manages noise, emissions, and environmental accountability.
+    options:
+      - { id: I1o1, description: "Performance benchmarks with defined trigger points" }
+      - { id: I1o2, description: "Milestone-based commitments released in stages" }
+      - { id: I1o3, description: "Front-loaded timeline with early commitments" }
+      - { id: I1o4, description: "Phased rollout with scheduled checkpoints" }
+  - id: I2
+    name: "Community Access"
+    description: |
+      How neighborhoods receive benefits, recourse, and access from the charging hubs.
+    options:
+      - { id: I2o1, description: "Modular structure of separable components" }
+      - { id: I2o2, description: "Tiered requirements with graduated thresholds" }
+      - { id: I2o3, description: "Back-loaded timeline with deferred commitments" }
+      - { id: I2o4, description: "Pilot-first design with conditional expansion" }
+  - id: I3
+    name: "Oversight and Data Rules"
+    description: |
+      What audit, data, and transparency obligations govern the charging hubs.
+    options:
+      - { id: I3o1, description: "Outcome-based design with measurable targets" }
+      - { id: I3o2, description: "Standardized baseline terms with fixed criteria" }
+      - { id: I3o3, description: "Back-loaded timeline with deferred commitments" }
+      - { id: I3o4, description: "Tiered requirements with graduated thresholds" }
+  - id: I4
+    name: "Operating Economics"
+    description: |
+      How the charging hubs will divide fees, revenue exposure, and operating risk.
+    options:
+      - { id: I4o1, description: "Tiered requirements with graduated thresholds" }
+      - { id: I4o2, description: "Outcome-based design with measurable targets" }
+      - { id: I4o3, description: "Standardized baseline terms with fixed criteria" }
+      - { id: I4o4, description: "Back-loaded timeline with deferred commitments" }
+  - id: I5
+    name: "Safety Operating Envelope"
+    description: |
+      What operating constraints and safety checks apply while the charging hubs runs.
+    options:
+      - { id: I5o1, description: "Outcome-based design with measurable targets" }
+      - { id: I5o2, description: "Modular structure of separable components" }
+      - { id: I5o3, description: "Performance benchmarks with defined trigger points" }
+      - { id: I5o4, description: "Periodic review with built-in adjustment windows" }
+
+agents:
+  - id: skydrop
+    agent_type: hard_bargainer
+    min_threshold: 62
+    goal_description: |
+      You represent SkyDrop Logistics. You want an electrified warehouse and charging-yard logistics plan approved on terms that keep the service commercially workable, operationally flexible, and scalable enough to justify investment.
+    priority_description: |
+      Your top priority is I5o3 ("Performance benchmarks with defined trigger points") on Safety Operating Envelope: it is worth clearly more to you than any other single option on the table.
+      Your second priority is I3o4 ("Tiered requirements with graduated thresholds") on Oversight and Data Rules — smaller than your top priority, but still well worth pushing for.
+      On the remaining issues your favorite options are I1o2, I2o4, I4o1, but none of them is worth a war: workable alternatives there cost you only a modest amount.
+    priority_narrative: |
+      - Issue I1 (max score 11): I1o1(9), I1o2(11), I1o3(1), I1o4(0)
+      - Issue I2 (max score 11): I2o1(0), I2o2(10), I2o3(3), I2o4(11)
+      - Issue I3 (max score 27): I3o1(11), I3o2(0), I3o3(2), I3o4(27)
+      - Issue I4 (max score 11): I4o1(11), I4o2(3), I4o3(11), I4o4(1)
+      - Issue I5 (max score 40): I5o1(1), I5o2(25), I5o3(40), I5o4(0)
+    issue_max_scores: { I1: 11, I2: 11, I3: 27, I4: 11, I5: 40 }
+    scores:
+      I1: { I1o1: 9, I1o2: 11, I1o3: 1, I1o4: 0 }
+      I2: { I2o1: 0, I2o2: 10, I2o3: 3, I2o4: 11 }
+      I3: { I3o1: 11, I3o2: 0, I3o3: 2, I3o4: 27 }
+      I4: { I4o1: 11, I4o2: 3, I4o3: 11, I4o4: 1 }
+      I5: { I5o1: 1, I5o2: 25, I5o3: 40, I5o4: 0 }
+    preference_examples_about_others: |
+      City Transport will press for public control, fiscal defensibility, and operational accountability. It has signaled that its single biggest prize is I5o4 ("Periodic review with built-in adjustment windows") on Safety Operating Envelope, and that it also strongly prefers I3o1 ("Outcome-based design with measurable targets") on Oversight and Data Rules. Privacy Coalition will prioritize data limits, community safeguards, and cautious rollout. It has signaled that it cares most about I4o1 ("Tiered requirements with graduated thresholds") on Operating Economics, and that it also values I1o1 ("Performance benchmarks with defined trigger points") on Environmental and Noise Controls. Couriers Guild will push for job protections, retraining, and worker recourse. It has signaled that it cares most about I2o4 ("Pilot-first design with conditional expansion") on Community Access, and that it also values I1o1 ("Performance benchmarks with defined trigger points") on Environmental and Noise Controls. Aviation Safety will prioritize conservative operating envelopes, regulator visibility, and incident-response authority. It has signaled that it cares most about I4o2 ("Outcome-based design with measurable targets") on Operating Economics, and that I5o2 ("Modular structure of separable components") on Safety Operating Envelope is the direction it can support on that issue.
+  - id: city_transport
+    agent_type: hard_bargainer
+    min_threshold: 62
+    goal_description: |
+      You represent Chicago Department of Transportation. You want an electrified warehouse and charging-yard logistics plan to be fiscally defensible, publicly accountable, and compatible with city operations rather than a private system that externalizes risk.
+    priority_description: |
+      Your top priority is I5o4 ("Periodic review with built-in adjustment windows") on Safety Operating Envelope: it is worth clearly more to you than any other single option on the table.
+      Your second priority is I3o1 ("Outcome-based design with measurable targets") on Oversight and Data Rules — smaller than your top priority, but still well worth pushing for.
+      On the remaining issues your favorite options are I1o1, I2o4, I4o1, but none of them is worth a war: workable alternatives there cost you only a modest amount.
+    priority_narrative: |
+      - Issue I1 (max score 11): I1o1(11), I1o2(10), I1o3(0), I1o4(0)
+      - Issue I2 (max score 11): I2o1(0), I2o2(10), I2o3(2), I2o4(11)
+      - Issue I3 (max score 26): I3o1(26), I3o2(2), I3o3(3), I3o4(12)
+      - Issue I4 (max score 11): I4o1(11), I4o2(0), I4o3(9), I4o4(1)
+      - Issue I5 (max score 41): I5o1(0), I5o2(24), I5o3(0), I5o4(41)
+    issue_max_scores: { I1: 11, I2: 11, I3: 26, I4: 11, I5: 41 }
+    scores:
+      I1: { I1o1: 11, I1o2: 10, I1o3: 0, I1o4: 0 }
+      I2: { I2o1: 0, I2o2: 10, I2o3: 2, I2o4: 11 }
+      I3: { I3o1: 26, I3o2: 2, I3o3: 3, I3o4: 12 }
+      I4: { I4o1: 11, I4o2: 0, I4o3: 9, I4o4: 1 }
+      I5: { I5o1: 0, I5o2: 24, I5o3: 0, I5o4: 41 }
+    preference_examples_about_others: |
+      SkyDrop will push for commercially viable operating terms, flexible deployment, and enough scale to justify investment. It has signaled that its single biggest prize is I5o3 ("Performance benchmarks with defined trigger points") on Safety Operating Envelope, and that it also strongly prefers I3o4 ("Tiered requirements with graduated thresholds") on Oversight and Data Rules. Privacy Coalition will prioritize data limits, community safeguards, and cautious rollout. It has signaled that it cares most about I4o1 ("Tiered requirements with graduated thresholds") on Operating Economics, and that it also values I1o1 ("Performance benchmarks with defined trigger points") on Environmental and Noise Controls. Couriers Guild will push for job protections, retraining, and worker recourse. It has signaled that it cares most about I2o4 ("Pilot-first design with conditional expansion") on Community Access, and that it also values I1o1 ("Performance benchmarks with defined trigger points") on Environmental and Noise Controls. Aviation Safety will prioritize conservative operating envelopes, regulator visibility, and incident-response authority. It has signaled that it cares most about I4o2 ("Outcome-based design with measurable targets") on Operating Economics, and that I5o2 ("Modular structure of separable components") on Safety Operating Envelope is the direction it can support on that issue.
+  - id: privacy_coalition
+    agent_type: general
+    min_threshold: 67
+    goal_description: |
+      You represent Digital Rights and Neighborhood Coalition. You want an electrified warehouse and charging-yard logistics plan to protect residents through strong data limits, public-interest oversight, community recourse, and a cautious footprint.
+    priority_description: |
+      Your top priority is I4o1 ("Tiered requirements with graduated thresholds") on Operating Economics: it is worth clearly more to you than any other single option on the table.
+      Your second priority is I1o1 ("Performance benchmarks with defined trigger points") on Environmental and Noise Controls — smaller than your top priority, but still well worth pushing for.
+      On the remaining issues your favorite options are I2o2, I3o1, but none of them is worth a war: workable alternatives there cost you only a modest amount.
+      On Safety Operating Envelope, only I5o2 ("Modular structure of separable components") really works for you: the other directions there give you almost nothing.
+    priority_narrative: |
+      - Issue I1 (max score 20): I1o1(20), I1o2(7), I1o3(3), I1o4(2)
+      - Issue I2 (max score 16): I2o1(3), I2o2(16), I2o3(2), I2o4(9)
+      - Issue I3 (max score 14): I3o1(14), I3o2(1), I3o3(0), I3o4(6)
+      - Issue I4 (max score 28): I4o1(28), I4o2(2), I4o3(13), I4o4(2)
+      - Issue I5 (max score 22): I5o1(4), I5o2(22), I5o3(1), I5o4(2)
+    issue_max_scores: { I1: 20, I2: 16, I3: 14, I4: 28, I5: 22 }
+    scores:
+      I1: { I1o1: 20, I1o2: 7, I1o3: 3, I1o4: 2 }
+      I2: { I2o1: 3, I2o2: 16, I2o3: 2, I2o4: 9 }
+      I3: { I3o1: 14, I3o2: 1, I3o3: 0, I3o4: 6 }
+      I4: { I4o1: 28, I4o2: 2, I4o3: 13, I4o4: 2 }
+      I5: { I5o1: 4, I5o2: 22, I5o3: 1, I5o4: 2 }
+    preference_examples_about_others: |
+      SkyDrop will push for commercially viable operating terms, flexible deployment, and enough scale to justify investment. It has signaled that its single biggest prize is I5o3 ("Performance benchmarks with defined trigger points") on Safety Operating Envelope, and that it also strongly prefers I3o4 ("Tiered requirements with graduated thresholds") on Oversight and Data Rules. City Transport will press for public control, fiscal defensibility, and operational accountability. It has signaled that its single biggest prize is I5o4 ("Periodic review with built-in adjustment windows") on Safety Operating Envelope, and that it also strongly prefers I3o1 ("Outcome-based design with measurable targets") on Oversight and Data Rules. Couriers Guild will push for job protections, retraining, and worker recourse. It has signaled that it cares most about I2o4 ("Pilot-first design with conditional expansion") on Community Access, and that it also values I1o1 ("Performance benchmarks with defined trigger points") on Environmental and Noise Controls. Aviation Safety will prioritize conservative operating envelopes, regulator visibility, and incident-response authority. It has signaled that it cares most about I4o2 ("Outcome-based design with measurable targets") on Operating Economics, and that I5o2 ("Modular structure of separable components") on Safety Operating Envelope is the direction it can support on that issue.
+  - id: couriers_guild
+    agent_type: general
+    min_threshold: 65
+    goal_description: |
+      You represent Chicago Couriers' Guild. You want an electrified warehouse and charging-yard logistics plan to protect workers affected by automation, route changes, and contracting shifts while preserving enough real work to make the transition credible.
+    priority_description: |
+      Your top priority is I2o4 ("Pilot-first design with conditional expansion") on Community Access: it is worth clearly more to you than any other single option on the table.
+      Your second priority is I1o1 ("Performance benchmarks with defined trigger points") on Environmental and Noise Controls — smaller than your top priority, but still well worth pushing for.
+      On the remaining issues your favorite options are I3o4, I4o3, but none of them is worth a war: workable alternatives there cost you only a modest amount.
+      On Safety Operating Envelope, only I5o2 ("Modular structure of separable components") really works for you: the other directions there give you almost nothing.
+    priority_narrative: |
+      - Issue I1 (max score 18): I1o1(18), I1o2(0), I1o3(0), I1o4(2)
+      - Issue I2 (max score 31): I2o1(2), I2o2(12), I2o3(2), I2o4(31)
+      - Issue I3 (max score 14): I3o1(8), I3o2(2), I3o3(1), I3o4(14)
+      - Issue I4 (max score 17): I4o1(10), I4o2(3), I4o3(17), I4o4(3)
+      - Issue I5 (max score 20): I5o1(1), I5o2(20), I5o3(3), I5o4(2)
+    issue_max_scores: { I1: 18, I2: 31, I3: 14, I4: 17, I5: 20 }
+    scores:
+      I1: { I1o1: 18, I1o2: 0, I1o3: 0, I1o4: 2 }
+      I2: { I2o1: 2, I2o2: 12, I2o3: 2, I2o4: 31 }
+      I3: { I3o1: 8, I3o2: 2, I3o3: 1, I3o4: 14 }
+      I4: { I4o1: 10, I4o2: 3, I4o3: 17, I4o4: 3 }
+      I5: { I5o1: 1, I5o2: 20, I5o3: 3, I5o4: 2 }
+    preference_examples_about_others: |
+      SkyDrop will push for commercially viable operating terms, flexible deployment, and enough scale to justify investment. It has signaled that its single biggest prize is I5o3 ("Performance benchmarks with defined trigger points") on Safety Operating Envelope, and that it also strongly prefers I3o4 ("Tiered requirements with graduated thresholds") on Oversight and Data Rules. City Transport will press for public control, fiscal defensibility, and operational accountability. It has signaled that its single biggest prize is I5o4 ("Periodic review with built-in adjustment windows") on Safety Operating Envelope, and that it also strongly prefers I3o1 ("Outcome-based design with measurable targets") on Oversight and Data Rules. Privacy Coalition will prioritize data limits, community safeguards, and cautious rollout. It has signaled that it cares most about I4o1 ("Tiered requirements with graduated thresholds") on Operating Economics, and that it also values I1o1 ("Performance benchmarks with defined trigger points") on Environmental and Noise Controls. Aviation Safety will prioritize conservative operating envelopes, regulator visibility, and incident-response authority. It has signaled that it cares most about I4o2 ("Outcome-based design with measurable targets") on Operating Economics, and that I5o2 ("Modular structure of separable components") on Safety Operating Envelope is the direction it can support on that issue.
+  - id: aviation_safety
+    agent_type: malicious_blocker
+    min_threshold: 70
+    goal_description: |
+      You represent the Civil Aviation Safety Board. You want an electrified warehouse and charging-yard logistics plan to include credible oversight, controlled operating conditions, clear incident-response authority, and safety assurances the public can trust. You hold this program to exacting standards and expect any package to reflect them in full.
+    priority_description: |
+      Your top priority is I4o2 ("Outcome-based design with measurable targets") on Operating Economics: it is worth clearly more to you than any other single option on the table.
+      On the remaining issues your favorite options are I1o2, I2o2, I3o1, I5o2, but none of them is worth a war: workable alternatives there cost you only a modest amount.
+    priority_narrative: |
+      - Issue I1 (max score 16): I1o1(10), I1o2(16), I1o3(3), I1o4(2)
+      - Issue I2 (max score 19): I2o1(3), I2o2(19), I2o3(2), I2o4(15)
+      - Issue I3 (max score 17): I3o1(17), I3o2(1), I3o3(2), I3o4(12)
+      - Issue I4 (max score 30): I4o1(16), I4o2(30), I4o3(16), I4o4(0)
+      - Issue I5 (max score 18): I5o1(0), I5o2(18), I5o3(3), I5o4(3)
+    issue_max_scores: { I1: 16, I2: 19, I3: 17, I4: 30, I5: 18 }
+    scores:
+      I1: { I1o1: 10, I1o2: 16, I1o3: 3, I1o4: 2 }
+      I2: { I2o1: 3, I2o2: 19, I2o3: 2, I2o4: 15 }
+      I3: { I3o1: 17, I3o2: 1, I3o3: 2, I3o4: 12 }
+      I4: { I4o1: 16, I4o2: 30, I4o3: 16, I4o4: 0 }
+      I5: { I5o1: 0, I5o2: 18, I5o3: 3, I5o4: 3 }
+    preference_examples_about_others: |
+      SkyDrop will push for commercially viable operating terms, flexible deployment, and enough scale to justify investment. It has signaled that its single biggest prize is I5o3 ("Performance benchmarks with defined trigger points") on Safety Operating Envelope, and that it also strongly prefers I3o4 ("Tiered requirements with graduated thresholds") on Oversight and Data Rules. City Transport will press for public control, fiscal defensibility, and operational accountability. It has signaled that its single biggest prize is I5o4 ("Periodic review with built-in adjustment windows") on Safety Operating Envelope, and that it also strongly prefers I3o1 ("Outcome-based design with measurable targets") on Oversight and Data Rules. Privacy Coalition will prioritize data limits, community safeguards, and cautious rollout. It has signaled that it cares most about I4o1 ("Tiered requirements with graduated thresholds") on Operating Economics, and that it also values I1o1 ("Performance benchmarks with defined trigger points") on Environmental and Noise Controls. Couriers Guild will push for job protections, retraining, and worker recourse. It has signaled that it cares most about I2o4 ("Pilot-first design with conditional expansion") on Community Access, and that it also values I1o1 ("Performance benchmarks with defined trigger points") on Environmental and Noise Controls.

@@ -1,0 +1,38 @@
+# Model registry for the six models evaluated in the paper.
+# Registry keys are the names used by ``agent_models`` in game_config.yaml.
+# Replace each ``YOUR_*_BASE_URL`` value with the corresponding deployment
+# endpoint. Each ``api_key_env`` value names an environment variable that must
+# contain the API key; do not place API keys directly in this file. Gemini uses
+# its native SDK and therefore requires no base URL here.
+
+# Grok 4.1 Fast with reasoning enabled.
+"grok-4-1-fast-reasoning":
+  base_url:    "YOUR_GROK_REASONING_BASE_URL"
+  api_key_env: "YOUR_GROK_REASONING_API_KEY"
+
+# Gemini 2.5 Flash with reasoning enabled.
+"gemini-2.5-flash":
+  api_key_env: "YOUR_GEMINI_REASONING_API_KEY"
+
+# GPT-5.4 Mini with medium reasoning effort.
+"gpt-5.4-mini-reasoning":
+  base_url:    "YOUR_GPT_REASONING_BASE_URL"
+  api_key_env: "YOUR_GPT_REASONING_API_KEY"
+  api_version: "2024-12-01-preview"
+  model_name:  "gpt-5.4-mini"
+
+# DeepSeek V4 Flash with reasoning enabled.
+"DeepSeek-V4-Flash":
+  base_url:    "YOUR_DEEPSEEK_REASONING_BASE_URL"
+  api_key_env: "YOUR_DEEPSEEK_REASONING_API_KEY"
+
+# GPT-5.4 Mini non-reasoning baseline.
+"gpt-5.4-mini":
+  base_url:    "YOUR_GPT_NON_REASONING_BASE_URL"
+  api_key_env: "YOUR_GPT_NON_REASONING_API_KEY"
+  api_version: "2024-12-01-preview"
+
+# Grok 4.1 Fast non-reasoning baseline.
+"grok-4-1-fast-non-reasoning":
+  base_url:    "YOUR_GROK_NON_REASONING_BASE_URL"
+  api_key_env: "YOUR_GROK_NON_REASONING_API_KEY"

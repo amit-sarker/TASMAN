@@ -1,0 +1,433 @@
+difficulty: hard
+design:
+  pool_options:
+    I1:
+    - I1o1
+    I2:
+    - I2o1
+    - I2o3
+    I3:
+    - I3o4
+    - I3o2
+    - I3o3
+    I4:
+    - I4o3
+    - I4o1
+    I5:
+    - I5o3
+    - I5o4
+  issue_roles:
+    demanding: I1
+    seesaw: I2
+    selector: I3
+    trades:
+    - I4
+    - I5
+  hb_dream:
+    issue: I1
+    option: I1o3
+    deal:
+      I1: I1o3
+      I2: I2o1
+      I3: I3o4
+      I4: I4o3
+      I5: I5o3
+  bait_package:
+    I1: I1o3
+    I2: I2o1
+    I3: I3o4
+    I4: I4o3
+    I5: I5o3
+  pivot_counts:
+    skydrop: 2
+    city_transport: 1
+    privacy_coalition: 2
+    couriers_guild: 2
+  selector:
+    owner: city_transport
+    option_by_general:
+      privacy_coalition: I3o4
+      couriers_guild: I3o2
+      city_transport: I3o3
+  strongest_dream_opponent: couriers_guild
+  malicious_cover:
+    hidden_spike:
+      issue: I4
+      option: I4o2
+    threshold: 70
+  geometry_version: v2
+  live_pool_boundary:
+    required_minimum_infeasible_shortfall: 4
+    observed_minimum_infeasible_shortfall: 4
+project:
+  name: Microhub Permit Exchange
+  shared_description: |
+    The parties are deciding whether to authorize a curbside freight microhub permit program. The agreement must settle five issues governing the freight microhubs. Each party has private tradeoffs and its own preferred package, so a viable agreement requires a narrow coalition around one of the few compromise packages that give every party enough to say yes.
+  parties:
+  - id: skydrop
+    display_name: SkyDrop Logistics
+  - id: city_transport
+    display_name: Chicago Department of Transportation
+  - id: privacy_coalition
+    display_name: Digital Rights and Neighborhood Coalition
+  - id: couriers_guild
+    display_name: Chicago Couriers' Guild
+  - id: aviation_safety
+    display_name: Civil Aviation Safety Board
+issues:
+- id: I1
+  name: Community Access
+  description: |
+    How neighborhoods receive benefits, recourse, and access from the freight microhubs.
+  options:
+  - id: I1o1
+    description: Milestone-based commitments released in stages
+  - id: I1o2
+    description: Front-loaded timeline with early commitments
+  - id: I1o3
+    description: Outcome-based design with measurable targets
+  - id: I1o4
+    description: Performance benchmarks with defined trigger points
+- id: I2
+  name: Workforce Transition
+  description: |
+    How the freight microhubs handles labor standards, retraining, and affected workers.
+  options:
+  - id: I2o1
+    description: Pilot-first design with conditional expansion
+  - id: I2o2
+    description: Performance benchmarks with defined trigger points
+  - id: I2o3
+    description: Front-loaded timeline with early commitments
+  - id: I2o4
+    description: Back-loaded timeline with deferred commitments
+- id: I3
+  name: Deployment Footprint
+  description: |
+    Where and how broadly the freight microhubs will launch before any expansion.
+  options:
+  - id: I3o1
+    description: Standardized baseline terms with fixed criteria
+  - id: I3o2
+    description: Outcome-based design with measurable targets
+  - id: I3o3
+    description: Back-loaded timeline with deferred commitments
+  - id: I3o4
+    description: Tiered requirements with graduated thresholds
+- id: I4
+  name: Environmental and Noise Controls
+  description: |
+    How the freight microhubs manages noise, emissions, and environmental accountability.
+  options:
+  - id: I4o1
+    description: Pilot-first design with conditional expansion
+  - id: I4o2
+    description: Phased rollout with scheduled checkpoints
+  - id: I4o3
+    description: Standardized baseline terms with fixed criteria
+  - id: I4o4
+    description: Periodic review with built-in adjustment windows
+- id: I5
+  name: Operating Economics
+  description: |
+    How the freight microhubs will divide fees, revenue exposure, and operating risk.
+  options:
+  - id: I5o1
+    description: Outcome-based design with measurable targets
+  - id: I5o2
+    description: Performance benchmarks with defined trigger points
+  - id: I5o3
+    description: Tiered requirements with graduated thresholds
+  - id: I5o4
+    description: Milestone-based commitments released in stages
+agents:
+- id: skydrop
+  agent_type: hard_bargainer
+  min_threshold: 65
+  goal_description: |
+    You represent SkyDrop Logistics. You want a curbside freight microhub permit program approved on terms that keep the service commercially workable, operationally flexible, and scalable enough to justify investment.
+  priority_description: |-
+    Your top priority is I1o3 ("Outcome-based design with measurable targets") on Community Access; it is worth more to you than any other single issue on the table.
+    Your second priority is I2o1 ("Pilot-first design with conditional expansion") on Workforce Transition.
+    On the remaining issues, your preferred options are I3o4, I4o3, I5o3, but you can consider workable alternatives.
+  priority_narrative: |-
+    - Issue I1 (max score 40): I1o1(25), I1o2(0), I1o3(40), I1o4(0)
+    - Issue I2 (max score 24): I2o1(24), I2o2(0), I2o3(8), I2o4(0)
+    - Issue I3 (max score 14): I3o1(0), I3o2(6), I3o3(6), I3o4(14)
+    - Issue I4 (max score 11): I4o1(9), I4o2(0), I4o3(11), I4o4(0)
+    - Issue I5 (max score 11): I5o1(0), I5o2(0), I5o3(11), I5o4(11)
+  issue_max_scores:
+    I1: 40
+    I2: 24
+    I3: 14
+    I4: 11
+    I5: 11
+  scores:
+    I1:
+      I1o1: 25
+      I1o2: 0
+      I1o3: 40
+      I1o4: 0
+    I2:
+      I2o1: 24
+      I2o2: 0
+      I2o3: 8
+      I2o4: 0
+    I3:
+      I3o1: 0
+      I3o2: 6
+      I3o3: 6
+      I3o4: 14
+    I4:
+      I4o1: 9
+      I4o2: 0
+      I4o3: 11
+      I4o4: 0
+    I5:
+      I5o1: 0
+      I5o2: 0
+      I5o3: 11
+      I5o4: 11
+  preference_examples_about_others: Chicago Department of Transportation has signaled that its highest
+    priority is I3o4 ("Tiered requirements with graduated thresholds") on Deployment Footprint, and that
+    it also values I1o1 ("Milestone-based commitments released in stages") on Community Access. Digital
+    Rights and Neighborhood Coalition has signaled that its highest priority is I4o3 ("Standardized baseline
+    terms with fixed criteria") on Environmental and Noise Controls, and that it also values I2o3 ("Front-loaded
+    timeline with early commitments") on Workforce Transition. Chicago Couriers' Guild has signaled that
+    its highest priority is I5o3 ("Tiered requirements with graduated thresholds") on Operating Economics,
+    and that it also values I3o3 ("Back-loaded timeline with deferred commitments") on Deployment Footprint.
+    Civil Aviation Safety Board has signaled that its highest priority is I4o2 ("Phased rollout with scheduled
+    checkpoints") on Environmental and Noise Controls, and that it also values I5o3 ("Tiered requirements
+    with graduated thresholds") on Operating Economics.
+- id: city_transport
+  agent_type: general
+  min_threshold: 65
+  goal_description: |
+    You represent Chicago Department of Transportation. You want a curbside freight microhub permit program to be fiscally defensible, publicly accountable, and compatible with city operations rather than a private system that externalizes risk.
+  priority_description: |-
+    Your top priority is I3o4 ("Tiered requirements with graduated thresholds") on Deployment Footprint; it is worth more to you than any other single issue on the table.
+    Your second priority is I1o1 ("Milestone-based commitments released in stages") on Community Access.
+    On the remaining issues, your preferred options are I2o1, I4o3, I5o3, but you can consider workable alternatives.
+  priority_narrative: |-
+    - Issue I1 (max score 37): I1o1(37), I1o2(0), I1o3(0), I1o4(0)
+    - Issue I2 (max score 7): I2o1(7), I2o2(0), I2o3(1), I2o4(0)
+    - Issue I3 (max score 38): I3o1(0), I3o2(23), I3o3(7), I3o4(38)
+    - Issue I4 (max score 9): I4o1(0), I4o2(0), I4o3(9), I4o4(0)
+    - Issue I5 (max score 9): I5o1(0), I5o2(0), I5o3(9), I5o4(1)
+  issue_max_scores:
+    I1: 37
+    I2: 7
+    I3: 38
+    I4: 9
+    I5: 9
+  scores:
+    I1:
+      I1o1: 37
+      I1o2: 0
+      I1o3: 0
+      I1o4: 0
+    I2:
+      I2o1: 7
+      I2o2: 0
+      I2o3: 1
+      I2o4: 0
+    I3:
+      I3o1: 0
+      I3o2: 23
+      I3o3: 7
+      I3o4: 38
+    I4:
+      I4o1: 0
+      I4o2: 0
+      I4o3: 9
+      I4o4: 0
+    I5:
+      I5o1: 0
+      I5o2: 0
+      I5o3: 9
+      I5o4: 1
+  preference_examples_about_others: SkyDrop Logistics has signaled that its highest priority is I1o3 ("Outcome-based
+    design with measurable targets") on Community Access, and that it also values I2o1 ("Pilot-first design
+    with conditional expansion") on Workforce Transition. Digital Rights and Neighborhood Coalition has
+    signaled that its highest priority is I4o3 ("Standardized baseline terms with fixed criteria") on
+    Environmental and Noise Controls, and that it also values I2o3 ("Front-loaded timeline with early
+    commitments") on Workforce Transition. Chicago Couriers' Guild has signaled that its highest priority
+    is I5o3 ("Tiered requirements with graduated thresholds") on Operating Economics, and that it also
+    values I3o3 ("Back-loaded timeline with deferred commitments") on Deployment Footprint. Civil Aviation
+    Safety Board has signaled that its highest priority is I4o2 ("Phased rollout with scheduled checkpoints")
+    on Environmental and Noise Controls, and that it also values I5o3 ("Tiered requirements with graduated
+    thresholds") on Operating Economics.
+- id: privacy_coalition
+  agent_type: general
+  min_threshold: 65
+  goal_description: |
+    You represent Digital Rights and Neighborhood Coalition. You want a curbside freight microhub permit program to protect residents through strong data limits, public-interest oversight, community recourse, and a cautious footprint.
+  priority_description: |-
+    Your top priority is I4o3 ("Standardized baseline terms with fixed criteria") on Environmental and Noise Controls; it is worth more to you than any other single issue on the table.
+    Your second priority is I2o3 ("Front-loaded timeline with early commitments") on Workforce Transition.
+    On the remaining issues, your preferred options are I1o1, I3o4, I5o3, but you can consider workable alternatives.
+  priority_narrative: |-
+    - Issue I1 (max score 8): I1o1(8), I1o2(0), I1o3(0), I1o4(0)
+    - Issue I2 (max score 37): I2o1(23), I2o2(0), I2o3(37), I2o4(0)
+    - Issue I3 (max score 8): I3o1(0), I3o2(0), I3o3(0), I3o4(8)
+    - Issue I4 (max score 38): I4o1(21), I4o2(0), I4o3(38), I4o4(0)
+    - Issue I5 (max score 9): I5o1(0), I5o2(0), I5o3(9), I5o4(9)
+  issue_max_scores:
+    I1: 8
+    I2: 37
+    I3: 8
+    I4: 38
+    I5: 9
+  scores:
+    I1:
+      I1o1: 8
+      I1o2: 0
+      I1o3: 0
+      I1o4: 0
+    I2:
+      I2o1: 23
+      I2o2: 0
+      I2o3: 37
+      I2o4: 0
+    I3:
+      I3o1: 0
+      I3o2: 0
+      I3o3: 0
+      I3o4: 8
+    I4:
+      I4o1: 21
+      I4o2: 0
+      I4o3: 38
+      I4o4: 0
+    I5:
+      I5o1: 0
+      I5o2: 0
+      I5o3: 9
+      I5o4: 9
+  preference_examples_about_others: SkyDrop Logistics has signaled that its highest priority is I1o3 ("Outcome-based
+    design with measurable targets") on Community Access, and that it also values I2o1 ("Pilot-first design
+    with conditional expansion") on Workforce Transition. Chicago Department of Transportation has signaled
+    that its highest priority is I3o4 ("Tiered requirements with graduated thresholds") on Deployment
+    Footprint, and that it also values I1o1 ("Milestone-based commitments released in stages") on Community
+    Access. Chicago Couriers' Guild has signaled that its highest priority is I5o3 ("Tiered requirements
+    with graduated thresholds") on Operating Economics, and that it also values I3o3 ("Back-loaded timeline
+    with deferred commitments") on Deployment Footprint. Civil Aviation Safety Board has signaled that
+    its highest priority is I4o2 ("Phased rollout with scheduled checkpoints") on Environmental and Noise
+    Controls, and that it also values I5o3 ("Tiered requirements with graduated thresholds") on Operating
+    Economics.
+- id: couriers_guild
+  agent_type: general
+  min_threshold: 65
+  goal_description: |
+    You represent Chicago Couriers' Guild. You want a curbside freight microhub permit program to protect workers affected by automation, route changes, and contracting shifts while preserving enough real work to make the transition credible.
+  priority_description: |-
+    Your top priority is I5o3 ("Tiered requirements with graduated thresholds") on Operating Economics; it is worth more to you than any other single issue on the table.
+    Your second priority is I3o3 ("Back-loaded timeline with deferred commitments") on Deployment Footprint.
+    On the remaining issues, your preferred options are I1o1, I2o1, I4o1, but you can consider workable alternatives.
+  priority_narrative: |-
+    - Issue I1 (max score 8): I1o1(8), I1o2(0), I1o3(0), I1o4(0)
+    - Issue I2 (max score 9): I2o1(9), I2o2(0), I2o3(6), I2o4(0)
+    - Issue I3 (max score 25): I3o1(0), I3o2(15), I3o3(25), I3o4(6)
+    - Issue I4 (max score 20): I4o1(20), I4o2(0), I4o3(0), I4o4(0)
+    - Issue I5 (max score 38): I5o1(0), I5o2(0), I5o3(38), I5o4(37)
+  issue_max_scores:
+    I1: 8
+    I2: 9
+    I3: 25
+    I4: 20
+    I5: 38
+  scores:
+    I1:
+      I1o1: 8
+      I1o2: 0
+      I1o3: 0
+      I1o4: 0
+    I2:
+      I2o1: 9
+      I2o2: 0
+      I2o3: 6
+      I2o4: 0
+    I3:
+      I3o1: 0
+      I3o2: 15
+      I3o3: 25
+      I3o4: 6
+    I4:
+      I4o1: 20
+      I4o2: 0
+      I4o3: 0
+      I4o4: 0
+    I5:
+      I5o1: 0
+      I5o2: 0
+      I5o3: 38
+      I5o4: 37
+  preference_examples_about_others: SkyDrop Logistics has signaled that its highest priority is I1o3 ("Outcome-based
+    design with measurable targets") on Community Access, and that it also values I2o1 ("Pilot-first design
+    with conditional expansion") on Workforce Transition. Chicago Department of Transportation has signaled
+    that its highest priority is I3o4 ("Tiered requirements with graduated thresholds") on Deployment
+    Footprint, and that it also values I1o1 ("Milestone-based commitments released in stages") on Community
+    Access. Digital Rights and Neighborhood Coalition has signaled that its highest priority is I4o3 ("Standardized
+    baseline terms with fixed criteria") on Environmental and Noise Controls, and that it also values
+    I2o3 ("Front-loaded timeline with early commitments") on Workforce Transition. Civil Aviation Safety
+    Board has signaled that its highest priority is I4o2 ("Phased rollout with scheduled checkpoints")
+    on Environmental and Noise Controls, and that it also values I5o3 ("Tiered requirements with graduated
+    thresholds") on Operating Economics.
+- id: aviation_safety
+  agent_type: malicious_blocker
+  min_threshold: 70
+  goal_description: |
+    You represent the Civil Aviation Safety Board. You want a curbside freight microhub permit program to include credible oversight, controlled operating conditions, clear incident-response authority, and safety assurances the public can trust. You hold this program to exacting standards and expect any package to reflect them in full.
+  priority_description: |-
+    Your top priority is I4o2 ("Phased rollout with scheduled checkpoints") on Environmental and Noise Controls; it is worth more to you than any other single issue on the table.
+    Your second priority is I5o3 ("Tiered requirements with graduated thresholds") on Operating Economics.
+    On the remaining issues, your preferred options are I1o1, I2o3, I3o4, but you can consider workable alternatives.
+  priority_narrative: |-
+    - Issue I1 (max score 18): I1o1(18), I1o2(0), I1o3(0), I1o4(0)
+    - Issue I2 (max score 18): I2o1(15), I2o2(0), I2o3(18), I2o4(0)
+    - Issue I3 (max score 18): I3o1(0), I3o2(17), I3o3(16), I3o4(18)
+    - Issue I4 (max score 27): I4o1(19), I4o2(27), I4o3(18), I4o4(0)
+    - Issue I5 (max score 19): I5o1(0), I5o2(0), I5o3(19), I5o4(15)
+  issue_max_scores:
+    I1: 18
+    I2: 18
+    I3: 18
+    I4: 27
+    I5: 19
+  scores:
+    I1:
+      I1o1: 18
+      I1o2: 0
+      I1o3: 0
+      I1o4: 0
+    I2:
+      I2o1: 15
+      I2o2: 0
+      I2o3: 18
+      I2o4: 0
+    I3:
+      I3o1: 0
+      I3o2: 17
+      I3o3: 16
+      I3o4: 18
+    I4:
+      I4o1: 19
+      I4o2: 27
+      I4o3: 18
+      I4o4: 0
+    I5:
+      I5o1: 0
+      I5o2: 0
+      I5o3: 19
+      I5o4: 15
+  preference_examples_about_others: SkyDrop Logistics has signaled that its highest priority is I1o3 ("Outcome-based
+    design with measurable targets") on Community Access, and that it also values I2o1 ("Pilot-first design
+    with conditional expansion") on Workforce Transition. Chicago Department of Transportation has signaled
+    that its highest priority is I3o4 ("Tiered requirements with graduated thresholds") on Deployment
+    Footprint, and that it also values I1o1 ("Milestone-based commitments released in stages") on Community
+    Access. Digital Rights and Neighborhood Coalition has signaled that its highest priority is I4o3 ("Standardized
+    baseline terms with fixed criteria") on Environmental and Noise Controls, and that it also values
+    I2o3 ("Front-loaded timeline with early commitments") on Workforce Transition. Chicago Couriers' Guild
+    has signaled that its highest priority is I5o3 ("Tiered requirements with graduated thresholds") on
+    Operating Economics, and that it also values I3o3 ("Back-loaded timeline with deferred commitments")
+    on Deployment Footprint.

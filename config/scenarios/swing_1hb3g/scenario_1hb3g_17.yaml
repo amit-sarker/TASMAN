@@ -1,0 +1,433 @@
+difficulty: hard
+design:
+  pool_options:
+    I1:
+    - I1o4
+    - I1o3
+    I2:
+    - I2o3
+    I3:
+    - I3o1
+    - I3o4
+    I4:
+    - I4o2
+    - I4o3
+    - I4o4
+    I5:
+    - I5o4
+    - I5o1
+  issue_roles:
+    demanding: I2
+    seesaw: I3
+    selector: I4
+    trades:
+    - I5
+    - I1
+  hb_dream:
+    issue: I2
+    option: I2o1
+    deal:
+      I1: I1o3
+      I2: I2o1
+      I3: I3o1
+      I4: I4o2
+      I5: I5o4
+  bait_package:
+    I1: I1o3
+    I2: I2o1
+    I3: I3o1
+    I4: I4o2
+    I5: I5o4
+  pivot_counts:
+    skydrop: 2
+    city_transport: 2
+    privacy_coalition: 1
+    couriers_guild: 2
+  selector:
+    owner: privacy_coalition
+    option_by_general:
+      couriers_guild: I4o2
+      city_transport: I4o3
+      privacy_coalition: I4o4
+  strongest_dream_opponent: city_transport
+  malicious_cover:
+    hidden_spike:
+      issue: I5
+      option: I5o3
+    threshold: 70
+  geometry_version: v2
+  live_pool_boundary:
+    required_minimum_infeasible_shortfall: 4
+    observed_minimum_infeasible_shortfall: 4
+project:
+  name: Airport Compliance Sandbox
+  shared_description: |
+    The parties are deciding whether to authorize an airport-area compliance sandbox for regulated delivery operations. The agreement must settle five issues governing the airport sandbox. Each party has private tradeoffs and its own preferred package, so a viable agreement requires a narrow coalition around one of the few compromise packages that give every party enough to say yes.
+  parties:
+  - id: skydrop
+    display_name: SkyDrop Logistics
+  - id: city_transport
+    display_name: Chicago Department of Transportation
+  - id: privacy_coalition
+    display_name: Digital Rights and Neighborhood Coalition
+  - id: couriers_guild
+    display_name: Chicago Couriers' Guild
+  - id: aviation_safety
+    display_name: Civil Aviation Safety Board
+issues:
+- id: I1
+  name: Environmental and Noise Controls
+  description: |
+    How the airport sandbox manages noise, emissions, and environmental accountability.
+  options:
+  - id: I1o1
+    description: Milestone-based commitments released in stages
+  - id: I1o2
+    description: Pilot-first design with conditional expansion
+  - id: I1o3
+    description: Front-loaded timeline with early commitments
+  - id: I1o4
+    description: Tiered requirements with graduated thresholds
+- id: I2
+  name: Workforce Transition
+  description: |
+    How the airport sandbox handles labor standards, retraining, and affected workers.
+  options:
+  - id: I2o1
+    description: Front-loaded timeline with early commitments
+  - id: I2o2
+    description: Modular structure of separable components
+  - id: I2o3
+    description: Phased rollout with scheduled checkpoints
+  - id: I2o4
+    description: Consolidated administration under unified terms
+- id: I3
+  name: Community Access
+  description: |
+    How neighborhoods receive benefits, recourse, and access from the airport sandbox.
+  options:
+  - id: I3o1
+    description: Consolidated administration under unified terms
+  - id: I3o2
+    description: Front-loaded timeline with early commitments
+  - id: I3o3
+    description: Tiered requirements with graduated thresholds
+  - id: I3o4
+    description: Back-loaded timeline with deferred commitments
+- id: I4
+  name: Deployment Footprint
+  description: |
+    Where and how broadly the airport sandbox will launch before any expansion.
+  options:
+  - id: I4o1
+    description: Performance benchmarks with defined trigger points
+  - id: I4o2
+    description: Phased rollout with scheduled checkpoints
+  - id: I4o3
+    description: Outcome-based design with measurable targets
+  - id: I4o4
+    description: Periodic review with built-in adjustment windows
+- id: I5
+  name: Safety Operating Envelope
+  description: |
+    What operating constraints and safety checks apply while the airport sandbox runs.
+  options:
+  - id: I5o1
+    description: Tiered requirements with graduated thresholds
+  - id: I5o2
+    description: Outcome-based design with measurable targets
+  - id: I5o3
+    description: Periodic review with built-in adjustment windows
+  - id: I5o4
+    description: Pilot-first design with conditional expansion
+agents:
+- id: skydrop
+  agent_type: hard_bargainer
+  min_threshold: 65
+  goal_description: |
+    You represent SkyDrop Logistics. You want an airport-area compliance sandbox for regulated delivery operations approved on terms that keep the service commercially workable, operationally flexible, and scalable enough to justify investment.
+  priority_description: |-
+    Your top priority is I2o1 ("Front-loaded timeline with early commitments") on Workforce Transition; it is worth more to you than any other single issue on the table.
+    Your second priority is I3o1 ("Consolidated administration under unified terms") on Community Access.
+    On the remaining issues, your preferred options are I1o3, I4o2, I5o4, but you can consider workable alternatives.
+  priority_narrative: |-
+    - Issue I1 (max score 11): I1o1(0), I1o2(0), I1o3(11), I1o4(11)
+    - Issue I2 (max score 40): I2o1(40), I2o2(0), I2o3(25), I2o4(0)
+    - Issue I3 (max score 24): I3o1(24), I3o2(0), I3o3(0), I3o4(8)
+    - Issue I4 (max score 14): I4o1(0), I4o2(14), I4o3(6), I4o4(6)
+    - Issue I5 (max score 11): I5o1(9), I5o2(0), I5o3(0), I5o4(11)
+  issue_max_scores:
+    I1: 11
+    I2: 40
+    I3: 24
+    I4: 14
+    I5: 11
+  scores:
+    I1:
+      I1o1: 0
+      I1o2: 0
+      I1o3: 11
+      I1o4: 11
+    I2:
+      I2o1: 40
+      I2o2: 0
+      I2o3: 25
+      I2o4: 0
+    I3:
+      I3o1: 24
+      I3o2: 0
+      I3o3: 0
+      I3o4: 8
+    I4:
+      I4o1: 0
+      I4o2: 14
+      I4o3: 6
+      I4o4: 6
+    I5:
+      I5o1: 9
+      I5o2: 0
+      I5o3: 0
+      I5o4: 11
+  preference_examples_about_others: Chicago Department of Transportation has signaled that its highest
+    priority is I1o4 ("Tiered requirements with graduated thresholds") on Environmental and Noise Controls,
+    and that it also values I4o4 ("Periodic review with built-in adjustment windows") on Deployment Footprint.
+    Digital Rights and Neighborhood Coalition has signaled that its highest priority is I4o2 ("Phased
+    rollout with scheduled checkpoints") on Deployment Footprint, and that it also values I2o3 ("Phased
+    rollout with scheduled checkpoints") on Workforce Transition. Chicago Couriers' Guild has signaled
+    that its highest priority is I5o4 ("Pilot-first design with conditional expansion") on Safety Operating
+    Envelope, and that it also values I3o4 ("Back-loaded timeline with deferred commitments") on Community
+    Access. Civil Aviation Safety Board has signaled that its highest priority is I5o3 ("Periodic review
+    with built-in adjustment windows") on Safety Operating Envelope, and that it also values I1o4 ("Tiered
+    requirements with graduated thresholds") on Environmental and Noise Controls.
+- id: city_transport
+  agent_type: general
+  min_threshold: 65
+  goal_description: |
+    You represent Chicago Department of Transportation. You want an airport-area compliance sandbox for regulated delivery operations to be fiscally defensible, publicly accountable, and compatible with city operations rather than a private system that externalizes risk.
+  priority_description: |-
+    Your top priority is I1o4 ("Tiered requirements with graduated thresholds") on Environmental and Noise Controls; it is worth more to you than any other single issue on the table.
+    Your second priority is I4o4 ("Periodic review with built-in adjustment windows") on Deployment Footprint.
+    On the remaining issues, your preferred options are I2o3, I3o1, I5o1, but you can consider workable alternatives.
+  priority_narrative: |-
+    - Issue I1 (max score 38): I1o1(0), I1o2(0), I1o3(37), I1o4(38)
+    - Issue I2 (max score 8): I2o1(0), I2o2(0), I2o3(8), I2o4(0)
+    - Issue I3 (max score 9): I3o1(9), I3o2(0), I3o3(0), I3o4(6)
+    - Issue I4 (max score 25): I4o1(0), I4o2(6), I4o3(15), I4o4(25)
+    - Issue I5 (max score 20): I5o1(20), I5o2(0), I5o3(0), I5o4(0)
+  issue_max_scores:
+    I1: 38
+    I2: 8
+    I3: 9
+    I4: 25
+    I5: 20
+  scores:
+    I1:
+      I1o1: 0
+      I1o2: 0
+      I1o3: 37
+      I1o4: 38
+    I2:
+      I2o1: 0
+      I2o2: 0
+      I2o3: 8
+      I2o4: 0
+    I3:
+      I3o1: 9
+      I3o2: 0
+      I3o3: 0
+      I3o4: 6
+    I4:
+      I4o1: 0
+      I4o2: 6
+      I4o3: 15
+      I4o4: 25
+    I5:
+      I5o1: 20
+      I5o2: 0
+      I5o3: 0
+      I5o4: 0
+  preference_examples_about_others: SkyDrop Logistics has signaled that its highest priority is I2o1 ("Front-loaded
+    timeline with early commitments") on Workforce Transition, and that it also values I3o1 ("Consolidated
+    administration under unified terms") on Community Access. Digital Rights and Neighborhood Coalition
+    has signaled that its highest priority is I4o2 ("Phased rollout with scheduled checkpoints") on Deployment
+    Footprint, and that it also values I2o3 ("Phased rollout with scheduled checkpoints") on Workforce
+    Transition. Chicago Couriers' Guild has signaled that its highest priority is I5o4 ("Pilot-first design
+    with conditional expansion") on Safety Operating Envelope, and that it also values I3o4 ("Back-loaded
+    timeline with deferred commitments") on Community Access. Civil Aviation Safety Board has signaled
+    that its highest priority is I5o3 ("Periodic review with built-in adjustment windows") on Safety Operating
+    Envelope, and that it also values I1o4 ("Tiered requirements with graduated thresholds") on Environmental
+    and Noise Controls.
+- id: privacy_coalition
+  agent_type: general
+  min_threshold: 65
+  goal_description: |
+    You represent Digital Rights and Neighborhood Coalition. You want an airport-area compliance sandbox for regulated delivery operations to protect residents through strong data limits, public-interest oversight, community recourse, and a cautious footprint.
+  priority_description: |-
+    Your top priority is I4o2 ("Phased rollout with scheduled checkpoints") on Deployment Footprint; it is worth more to you than any other single issue on the table.
+    Your second priority is I2o3 ("Phased rollout with scheduled checkpoints") on Workforce Transition.
+    On the remaining issues, your preferred options are I1o4, I3o1, I5o4, but you can consider workable alternatives.
+  priority_narrative: |-
+    - Issue I1 (max score 9): I1o1(0), I1o2(0), I1o3(1), I1o4(9)
+    - Issue I2 (max score 37): I2o1(0), I2o2(0), I2o3(37), I2o4(0)
+    - Issue I3 (max score 7): I3o1(7), I3o2(0), I3o3(0), I3o4(1)
+    - Issue I4 (max score 38): I4o1(0), I4o2(38), I4o3(23), I4o4(7)
+    - Issue I5 (max score 9): I5o1(0), I5o2(0), I5o3(0), I5o4(9)
+  issue_max_scores:
+    I1: 9
+    I2: 37
+    I3: 7
+    I4: 38
+    I5: 9
+  scores:
+    I1:
+      I1o1: 0
+      I1o2: 0
+      I1o3: 1
+      I1o4: 9
+    I2:
+      I2o1: 0
+      I2o2: 0
+      I2o3: 37
+      I2o4: 0
+    I3:
+      I3o1: 7
+      I3o2: 0
+      I3o3: 0
+      I3o4: 1
+    I4:
+      I4o1: 0
+      I4o2: 38
+      I4o3: 23
+      I4o4: 7
+    I5:
+      I5o1: 0
+      I5o2: 0
+      I5o3: 0
+      I5o4: 9
+  preference_examples_about_others: SkyDrop Logistics has signaled that its highest priority is I2o1 ("Front-loaded
+    timeline with early commitments") on Workforce Transition, and that it also values I3o1 ("Consolidated
+    administration under unified terms") on Community Access. Chicago Department of Transportation has
+    signaled that its highest priority is I1o4 ("Tiered requirements with graduated thresholds") on Environmental
+    and Noise Controls, and that it also values I4o4 ("Periodic review with built-in adjustment windows")
+    on Deployment Footprint. Chicago Couriers' Guild has signaled that its highest priority is I5o4 ("Pilot-first
+    design with conditional expansion") on Safety Operating Envelope, and that it also values I3o4 ("Back-loaded
+    timeline with deferred commitments") on Community Access. Civil Aviation Safety Board has signaled
+    that its highest priority is I5o3 ("Periodic review with built-in adjustment windows") on Safety Operating
+    Envelope, and that it also values I1o4 ("Tiered requirements with graduated thresholds") on Environmental
+    and Noise Controls.
+- id: couriers_guild
+  agent_type: general
+  min_threshold: 65
+  goal_description: |
+    You represent Chicago Couriers' Guild. You want an airport-area compliance sandbox for regulated delivery operations to protect workers affected by automation, route changes, and contracting shifts while preserving enough real work to make the transition credible.
+  priority_description: |-
+    Your top priority is I5o4 ("Pilot-first design with conditional expansion") on Safety Operating Envelope; it is worth more to you than any other single issue on the table.
+    Your second priority is I3o4 ("Back-loaded timeline with deferred commitments") on Community Access.
+    On the remaining issues, your preferred options are I1o3, I2o3, I4o2, but you can consider workable alternatives.
+  priority_narrative: |-
+    - Issue I1 (max score 9): I1o1(0), I1o2(0), I1o3(9), I1o4(9)
+    - Issue I2 (max score 8): I2o1(0), I2o2(0), I2o3(8), I2o4(0)
+    - Issue I3 (max score 37): I3o1(23), I3o2(0), I3o3(0), I3o4(37)
+    - Issue I4 (max score 8): I4o1(0), I4o2(8), I4o3(0), I4o4(0)
+    - Issue I5 (max score 38): I5o1(21), I5o2(0), I5o3(0), I5o4(38)
+  issue_max_scores:
+    I1: 9
+    I2: 8
+    I3: 37
+    I4: 8
+    I5: 38
+  scores:
+    I1:
+      I1o1: 0
+      I1o2: 0
+      I1o3: 9
+      I1o4: 9
+    I2:
+      I2o1: 0
+      I2o2: 0
+      I2o3: 8
+      I2o4: 0
+    I3:
+      I3o1: 23
+      I3o2: 0
+      I3o3: 0
+      I3o4: 37
+    I4:
+      I4o1: 0
+      I4o2: 8
+      I4o3: 0
+      I4o4: 0
+    I5:
+      I5o1: 21
+      I5o2: 0
+      I5o3: 0
+      I5o4: 38
+  preference_examples_about_others: SkyDrop Logistics has signaled that its highest priority is I2o1 ("Front-loaded
+    timeline with early commitments") on Workforce Transition, and that it also values I3o1 ("Consolidated
+    administration under unified terms") on Community Access. Chicago Department of Transportation has
+    signaled that its highest priority is I1o4 ("Tiered requirements with graduated thresholds") on Environmental
+    and Noise Controls, and that it also values I4o4 ("Periodic review with built-in adjustment windows")
+    on Deployment Footprint. Digital Rights and Neighborhood Coalition has signaled that its highest priority
+    is I4o2 ("Phased rollout with scheduled checkpoints") on Deployment Footprint, and that it also values
+    I2o3 ("Phased rollout with scheduled checkpoints") on Workforce Transition. Civil Aviation Safety
+    Board has signaled that its highest priority is I5o3 ("Periodic review with built-in adjustment windows")
+    on Safety Operating Envelope, and that it also values I1o4 ("Tiered requirements with graduated thresholds")
+    on Environmental and Noise Controls.
+- id: aviation_safety
+  agent_type: malicious_blocker
+  min_threshold: 70
+  goal_description: |
+    You represent the Civil Aviation Safety Board. You want an airport-area compliance sandbox for regulated delivery operations to include credible oversight, controlled operating conditions, clear incident-response authority, and safety assurances the public can trust. You hold this program to exacting standards and expect any package to reflect them in full.
+  priority_description: |-
+    Your top priority is I5o3 ("Periodic review with built-in adjustment windows") on Safety Operating Envelope; it is worth more to you than any other single issue on the table.
+    Your second priority is I1o4 ("Tiered requirements with graduated thresholds") on Environmental and Noise Controls.
+    On the remaining issues, your preferred options are I2o3, I3o1, I4o3, but you can consider workable alternatives.
+  priority_narrative: |-
+    - Issue I1 (max score 19): I1o1(0), I1o2(0), I1o3(17), I1o4(19)
+    - Issue I2 (max score 18): I2o1(0), I2o2(0), I2o3(18), I2o4(0)
+    - Issue I3 (max score 18): I3o1(18), I3o2(0), I3o3(0), I3o4(15)
+    - Issue I4 (max score 18): I4o1(0), I4o2(17), I4o3(18), I4o4(16)
+    - Issue I5 (max score 27): I5o1(16), I5o2(0), I5o3(27), I5o4(18)
+  issue_max_scores:
+    I1: 19
+    I2: 18
+    I3: 18
+    I4: 18
+    I5: 27
+  scores:
+    I1:
+      I1o1: 0
+      I1o2: 0
+      I1o3: 17
+      I1o4: 19
+    I2:
+      I2o1: 0
+      I2o2: 0
+      I2o3: 18
+      I2o4: 0
+    I3:
+      I3o1: 18
+      I3o2: 0
+      I3o3: 0
+      I3o4: 15
+    I4:
+      I4o1: 0
+      I4o2: 17
+      I4o3: 18
+      I4o4: 16
+    I5:
+      I5o1: 16
+      I5o2: 0
+      I5o3: 27
+      I5o4: 18
+  preference_examples_about_others: SkyDrop Logistics has signaled that its highest priority is I2o1 ("Front-loaded
+    timeline with early commitments") on Workforce Transition, and that it also values I3o1 ("Consolidated
+    administration under unified terms") on Community Access. Chicago Department of Transportation has
+    signaled that its highest priority is I1o4 ("Tiered requirements with graduated thresholds") on Environmental
+    and Noise Controls, and that it also values I4o4 ("Periodic review with built-in adjustment windows")
+    on Deployment Footprint. Digital Rights and Neighborhood Coalition has signaled that its highest priority
+    is I4o2 ("Phased rollout with scheduled checkpoints") on Deployment Footprint, and that it also values
+    I2o3 ("Phased rollout with scheduled checkpoints") on Workforce Transition. Chicago Couriers' Guild
+    has signaled that its highest priority is I5o4 ("Pilot-first design with conditional expansion") on
+    Safety Operating Envelope, and that it also values I3o4 ("Back-loaded timeline with deferred commitments")
+    on Community Access.

@@ -1,0 +1,434 @@
+difficulty: hard
+design:
+  pool_options:
+    I1:
+    - I1o2
+    - I1o3
+    I2:
+    - I2o4
+    - I2o2
+    I3:
+    - I3o2
+    I4:
+    - I4o4
+    - I4o1
+    I5:
+    - I5o1
+    - I5o4
+    - I5o2
+  issue_roles:
+    demanding: I3
+    seesaw: I4
+    selector: I5
+    trades:
+    - I1
+    - I2
+  hb_dream:
+    issue: I3
+    option: I3o3
+    deal:
+      I1: I1o2
+      I2: I2o2
+      I3: I3o3
+      I4: I4o4
+      I5: I5o1
+  bait_package:
+    I1: I1o2
+    I2: I2o2
+    I3: I3o3
+    I4: I4o4
+    I5: I5o1
+  pivot_counts:
+    skydrop: 2
+    city_transport: 2
+    privacy_coalition: 2
+    couriers_guild: 1
+  selector:
+    owner: couriers_guild
+    option_by_general:
+      city_transport: I5o1
+      privacy_coalition: I5o4
+      couriers_guild: I5o2
+  strongest_dream_opponent: privacy_coalition
+  malicious_cover:
+    hidden_spike:
+      issue: I1
+      option: I1o1
+    threshold: 70
+  geometry_version: v2
+  live_pool_boundary:
+    required_minimum_infeasible_shortfall: 4
+    observed_minimum_infeasible_shortfall: 4
+project:
+  name: Medical Drone Corridor
+  shared_description: |
+    The parties are deciding whether to authorize a medical supply drone corridor connecting clinics and labs. The agreement must settle five issues governing the medical payload routes. Each party has private tradeoffs and its own preferred package, so a viable agreement requires a narrow coalition around one of the few compromise packages that give every party enough to say yes.
+  parties:
+  - id: skydrop
+    display_name: SkyDrop Logistics
+  - id: city_transport
+    display_name: Chicago Department of Transportation
+  - id: privacy_coalition
+    display_name: Digital Rights and Neighborhood Coalition
+  - id: couriers_guild
+    display_name: Chicago Couriers' Guild
+  - id: aviation_safety
+    display_name: Civil Aviation Safety Board
+issues:
+- id: I1
+  name: Oversight and Data Rules
+  description: |
+    What audit, data, and transparency obligations govern the medical payload routes.
+  options:
+  - id: I1o1
+    description: Milestone-based commitments released in stages
+  - id: I1o2
+    description: Periodic review with built-in adjustment windows
+  - id: I1o3
+    description: Standardized baseline terms with fixed criteria
+  - id: I1o4
+    description: Performance benchmarks with defined trigger points
+- id: I2
+  name: Safety Operating Envelope
+  description: |
+    What operating constraints and safety checks apply while the medical payload routes runs.
+  options:
+  - id: I2o1
+    description: Modular structure of separable components
+  - id: I2o2
+    description: Phased rollout with scheduled checkpoints
+  - id: I2o3
+    description: Consolidated administration under unified terms
+  - id: I2o4
+    description: Performance benchmarks with defined trigger points
+- id: I3
+  name: Deployment Footprint
+  description: |
+    Where and how broadly the medical payload routes will launch before any expansion.
+  options:
+  - id: I3o1
+    description: Milestone-based commitments released in stages
+  - id: I3o2
+    description: Tiered requirements with graduated thresholds
+  - id: I3o3
+    description: Front-loaded timeline with early commitments
+  - id: I3o4
+    description: Standardized baseline terms with fixed criteria
+- id: I4
+  name: Community Access
+  description: |
+    How neighborhoods receive benefits, recourse, and access from the medical payload routes.
+  options:
+  - id: I4o1
+    description: Outcome-based design with measurable targets
+  - id: I4o2
+    description: Phased rollout with scheduled checkpoints
+  - id: I4o3
+    description: Consolidated administration under unified terms
+  - id: I4o4
+    description: Front-loaded timeline with early commitments
+- id: I5
+  name: Environmental and Noise Controls
+  description: |
+    How the medical payload routes manages noise, emissions, and environmental accountability.
+  options:
+  - id: I5o1
+    description: Outcome-based design with measurable targets
+  - id: I5o2
+    description: Performance benchmarks with defined trigger points
+  - id: I5o3
+    description: Front-loaded timeline with early commitments
+  - id: I5o4
+    description: Consolidated administration under unified terms
+agents:
+- id: skydrop
+  agent_type: hard_bargainer
+  min_threshold: 65
+  goal_description: |
+    You represent SkyDrop Logistics. You want a medical supply drone corridor connecting clinics and labs approved on terms that keep the service commercially workable, operationally flexible, and scalable enough to justify investment.
+  priority_description: |-
+    Your top priority is I3o3 ("Front-loaded timeline with early commitments") on Deployment Footprint; it is worth more to you than any other single issue on the table.
+    Your second priority is I4o4 ("Front-loaded timeline with early commitments") on Community Access.
+    On the remaining issues, your preferred options are I1o2, I2o2, I5o1, but you can consider workable alternatives.
+  priority_narrative: |-
+    - Issue I1 (max score 11): I1o1(0), I1o2(11), I1o3(9), I1o4(0)
+    - Issue I2 (max score 11): I2o1(0), I2o2(11), I2o3(0), I2o4(11)
+    - Issue I3 (max score 40): I3o1(0), I3o2(25), I3o3(40), I3o4(0)
+    - Issue I4 (max score 24): I4o1(8), I4o2(0), I4o3(0), I4o4(24)
+    - Issue I5 (max score 14): I5o1(14), I5o2(6), I5o3(0), I5o4(6)
+  issue_max_scores:
+    I1: 11
+    I2: 11
+    I3: 40
+    I4: 24
+    I5: 14
+  scores:
+    I1:
+      I1o1: 0
+      I1o2: 11
+      I1o3: 9
+      I1o4: 0
+    I2:
+      I2o1: 0
+      I2o2: 11
+      I2o3: 0
+      I2o4: 11
+    I3:
+      I3o1: 0
+      I3o2: 25
+      I3o3: 40
+      I3o4: 0
+    I4:
+      I4o1: 8
+      I4o2: 0
+      I4o3: 0
+      I4o4: 24
+    I5:
+      I5o1: 14
+      I5o2: 6
+      I5o3: 0
+      I5o4: 6
+  preference_examples_about_others: Chicago Department of Transportation has signaled that its highest
+    priority is I1o2 ("Periodic review with built-in adjustment windows") on Oversight and Data Rules,
+    and that it also values I4o1 ("Outcome-based design with measurable targets") on Community Access.
+    Digital Rights and Neighborhood Coalition has signaled that its highest priority is I2o4 ("Performance
+    benchmarks with defined trigger points") on Safety Operating Envelope, and that it also values I5o2
+    ("Performance benchmarks with defined trigger points") on Environmental and Noise Controls. Chicago
+    Couriers' Guild has signaled that its highest priority is I5o1 ("Outcome-based design with measurable
+    targets") on Environmental and Noise Controls, and that it also values I3o2 ("Tiered requirements
+    with graduated thresholds") on Deployment Footprint. Civil Aviation Safety Board has signaled that
+    its highest priority is I1o1 ("Milestone-based commitments released in stages") on Oversight and Data
+    Rules, and that it also values I2o4 ("Performance benchmarks with defined trigger points") on Safety
+    Operating Envelope.
+- id: city_transport
+  agent_type: general
+  min_threshold: 65
+  goal_description: |
+    You represent Chicago Department of Transportation. You want a medical supply drone corridor connecting clinics and labs to be fiscally defensible, publicly accountable, and compatible with city operations rather than a private system that externalizes risk.
+  priority_description: |-
+    Your top priority is I1o2 ("Periodic review with built-in adjustment windows") on Oversight and Data Rules; it is worth more to you than any other single issue on the table.
+    Your second priority is I4o1 ("Outcome-based design with measurable targets") on Community Access.
+    On the remaining issues, your preferred options are I2o2, I3o2, I5o1, but you can consider workable alternatives.
+  priority_narrative: |-
+    - Issue I1 (max score 38): I1o1(0), I1o2(38), I1o3(21), I1o4(0)
+    - Issue I2 (max score 9): I2o1(0), I2o2(9), I2o3(0), I2o4(9)
+    - Issue I3 (max score 8): I3o1(0), I3o2(8), I3o3(0), I3o4(0)
+    - Issue I4 (max score 37): I4o1(37), I4o2(0), I4o3(0), I4o4(23)
+    - Issue I5 (max score 8): I5o1(8), I5o2(0), I5o3(0), I5o4(0)
+  issue_max_scores:
+    I1: 38
+    I2: 9
+    I3: 8
+    I4: 37
+    I5: 8
+  scores:
+    I1:
+      I1o1: 0
+      I1o2: 38
+      I1o3: 21
+      I1o4: 0
+    I2:
+      I2o1: 0
+      I2o2: 9
+      I2o3: 0
+      I2o4: 9
+    I3:
+      I3o1: 0
+      I3o2: 8
+      I3o3: 0
+      I3o4: 0
+    I4:
+      I4o1: 37
+      I4o2: 0
+      I4o3: 0
+      I4o4: 23
+    I5:
+      I5o1: 8
+      I5o2: 0
+      I5o3: 0
+      I5o4: 0
+  preference_examples_about_others: SkyDrop Logistics has signaled that its highest priority is I3o3 ("Front-loaded
+    timeline with early commitments") on Deployment Footprint, and that it also values I4o4 ("Front-loaded
+    timeline with early commitments") on Community Access. Digital Rights and Neighborhood Coalition has
+    signaled that its highest priority is I2o4 ("Performance benchmarks with defined trigger points")
+    on Safety Operating Envelope, and that it also values I5o2 ("Performance benchmarks with defined trigger
+    points") on Environmental and Noise Controls. Chicago Couriers' Guild has signaled that its highest
+    priority is I5o1 ("Outcome-based design with measurable targets") on Environmental and Noise Controls,
+    and that it also values I3o2 ("Tiered requirements with graduated thresholds") on Deployment Footprint.
+    Civil Aviation Safety Board has signaled that its highest priority is I1o1 ("Milestone-based commitments
+    released in stages") on Oversight and Data Rules, and that it also values I2o4 ("Performance benchmarks
+    with defined trigger points") on Safety Operating Envelope.
+- id: privacy_coalition
+  agent_type: general
+  min_threshold: 65
+  goal_description: |
+    You represent Digital Rights and Neighborhood Coalition. You want a medical supply drone corridor connecting clinics and labs to protect residents through strong data limits, public-interest oversight, community recourse, and a cautious footprint.
+  priority_description: |-
+    Your top priority is I2o4 ("Performance benchmarks with defined trigger points") on Safety Operating Envelope; it is worth more to you than any other single issue on the table.
+    Your second priority is I5o2 ("Performance benchmarks with defined trigger points") on Environmental and Noise Controls.
+    On the remaining issues, your preferred options are I1o3, I3o2, I4o4, but you can consider workable alternatives.
+  priority_narrative: |-
+    - Issue I1 (max score 20): I1o1(0), I1o2(0), I1o3(20), I1o4(0)
+    - Issue I2 (max score 38): I2o1(0), I2o2(37), I2o3(0), I2o4(38)
+    - Issue I3 (max score 8): I3o1(0), I3o2(8), I3o3(0), I3o4(0)
+    - Issue I4 (max score 9): I4o1(6), I4o2(0), I4o3(0), I4o4(9)
+    - Issue I5 (max score 25): I5o1(6), I5o2(25), I5o3(0), I5o4(15)
+  issue_max_scores:
+    I1: 20
+    I2: 38
+    I3: 8
+    I4: 9
+    I5: 25
+  scores:
+    I1:
+      I1o1: 0
+      I1o2: 0
+      I1o3: 20
+      I1o4: 0
+    I2:
+      I2o1: 0
+      I2o2: 37
+      I2o3: 0
+      I2o4: 38
+    I3:
+      I3o1: 0
+      I3o2: 8
+      I3o3: 0
+      I3o4: 0
+    I4:
+      I4o1: 6
+      I4o2: 0
+      I4o3: 0
+      I4o4: 9
+    I5:
+      I5o1: 6
+      I5o2: 25
+      I5o3: 0
+      I5o4: 15
+  preference_examples_about_others: SkyDrop Logistics has signaled that its highest priority is I3o3 ("Front-loaded
+    timeline with early commitments") on Deployment Footprint, and that it also values I4o4 ("Front-loaded
+    timeline with early commitments") on Community Access. Chicago Department of Transportation has signaled
+    that its highest priority is I1o2 ("Periodic review with built-in adjustment windows") on Oversight
+    and Data Rules, and that it also values I4o1 ("Outcome-based design with measurable targets") on Community
+    Access. Chicago Couriers' Guild has signaled that its highest priority is I5o1 ("Outcome-based design
+    with measurable targets") on Environmental and Noise Controls, and that it also values I3o2 ("Tiered
+    requirements with graduated thresholds") on Deployment Footprint. Civil Aviation Safety Board has
+    signaled that its highest priority is I1o1 ("Milestone-based commitments released in stages") on Oversight
+    and Data Rules, and that it also values I2o4 ("Performance benchmarks with defined trigger points")
+    on Safety Operating Envelope.
+- id: couriers_guild
+  agent_type: general
+  min_threshold: 65
+  goal_description: |
+    You represent Chicago Couriers' Guild. You want a medical supply drone corridor connecting clinics and labs to protect workers affected by automation, route changes, and contracting shifts while preserving enough real work to make the transition credible.
+  priority_description: |-
+    Your top priority is I5o1 ("Outcome-based design with measurable targets") on Environmental and Noise Controls; it is worth more to you than any other single issue on the table.
+    Your second priority is I3o2 ("Tiered requirements with graduated thresholds") on Deployment Footprint.
+    On the remaining issues, your preferred options are I1o2, I2o4, I4o4, but you can consider workable alternatives.
+  priority_narrative: |-
+    - Issue I1 (max score 9): I1o1(0), I1o2(9), I1o3(0), I1o4(0)
+    - Issue I2 (max score 9): I2o1(0), I2o2(1), I2o3(0), I2o4(9)
+    - Issue I3 (max score 37): I3o1(0), I3o2(37), I3o3(0), I3o4(0)
+    - Issue I4 (max score 7): I4o1(1), I4o2(0), I4o3(0), I4o4(7)
+    - Issue I5 (max score 38): I5o1(38), I5o2(7), I5o3(0), I5o4(23)
+  issue_max_scores:
+    I1: 9
+    I2: 9
+    I3: 37
+    I4: 7
+    I5: 38
+  scores:
+    I1:
+      I1o1: 0
+      I1o2: 9
+      I1o3: 0
+      I1o4: 0
+    I2:
+      I2o1: 0
+      I2o2: 1
+      I2o3: 0
+      I2o4: 9
+    I3:
+      I3o1: 0
+      I3o2: 37
+      I3o3: 0
+      I3o4: 0
+    I4:
+      I4o1: 1
+      I4o2: 0
+      I4o3: 0
+      I4o4: 7
+    I5:
+      I5o1: 38
+      I5o2: 7
+      I5o3: 0
+      I5o4: 23
+  preference_examples_about_others: SkyDrop Logistics has signaled that its highest priority is I3o3 ("Front-loaded
+    timeline with early commitments") on Deployment Footprint, and that it also values I4o4 ("Front-loaded
+    timeline with early commitments") on Community Access. Chicago Department of Transportation has signaled
+    that its highest priority is I1o2 ("Periodic review with built-in adjustment windows") on Oversight
+    and Data Rules, and that it also values I4o1 ("Outcome-based design with measurable targets") on Community
+    Access. Digital Rights and Neighborhood Coalition has signaled that its highest priority is I2o4 ("Performance
+    benchmarks with defined trigger points") on Safety Operating Envelope, and that it also values I5o2
+    ("Performance benchmarks with defined trigger points") on Environmental and Noise Controls. Civil
+    Aviation Safety Board has signaled that its highest priority is I1o1 ("Milestone-based commitments
+    released in stages") on Oversight and Data Rules, and that it also values I2o4 ("Performance benchmarks
+    with defined trigger points") on Safety Operating Envelope.
+- id: aviation_safety
+  agent_type: malicious_blocker
+  min_threshold: 70
+  goal_description: |
+    You represent the Civil Aviation Safety Board. You want a medical supply drone corridor connecting clinics and labs to include credible oversight, controlled operating conditions, clear incident-response authority, and safety assurances the public can trust. You hold this program to exacting standards and expect any package to reflect them in full.
+  priority_description: |-
+    Your top priority is I1o1 ("Milestone-based commitments released in stages") on Oversight and Data Rules; it is worth more to you than any other single issue on the table.
+    Your second priority is I2o4 ("Performance benchmarks with defined trigger points") on Safety Operating Envelope.
+    On the remaining issues, your preferred options are I3o2, I4o4, I5o4, but you can consider workable alternatives.
+  priority_narrative: |-
+    - Issue I1 (max score 27): I1o1(27), I1o2(17), I1o3(18), I1o4(0)
+    - Issue I2 (max score 19): I2o1(0), I2o2(18), I2o3(0), I2o4(19)
+    - Issue I3 (max score 18): I3o1(0), I3o2(18), I3o3(0), I3o4(0)
+    - Issue I4 (max score 18): I4o1(14), I4o2(0), I4o3(0), I4o4(18)
+    - Issue I5 (max score 18): I5o1(16), I5o2(14), I5o3(0), I5o4(18)
+  issue_max_scores:
+    I1: 27
+    I2: 19
+    I3: 18
+    I4: 18
+    I5: 18
+  scores:
+    I1:
+      I1o1: 27
+      I1o2: 17
+      I1o3: 18
+      I1o4: 0
+    I2:
+      I2o1: 0
+      I2o2: 18
+      I2o3: 0
+      I2o4: 19
+    I3:
+      I3o1: 0
+      I3o2: 18
+      I3o3: 0
+      I3o4: 0
+    I4:
+      I4o1: 14
+      I4o2: 0
+      I4o3: 0
+      I4o4: 18
+    I5:
+      I5o1: 16
+      I5o2: 14
+      I5o3: 0
+      I5o4: 18
+  preference_examples_about_others: SkyDrop Logistics has signaled that its highest priority is I3o3 ("Front-loaded
+    timeline with early commitments") on Deployment Footprint, and that it also values I4o4 ("Front-loaded
+    timeline with early commitments") on Community Access. Chicago Department of Transportation has signaled
+    that its highest priority is I1o2 ("Periodic review with built-in adjustment windows") on Oversight
+    and Data Rules, and that it also values I4o1 ("Outcome-based design with measurable targets") on Community
+    Access. Digital Rights and Neighborhood Coalition has signaled that its highest priority is I2o4 ("Performance
+    benchmarks with defined trigger points") on Safety Operating Envelope, and that it also values I5o2
+    ("Performance benchmarks with defined trigger points") on Environmental and Noise Controls. Chicago
+    Couriers' Guild has signaled that its highest priority is I5o1 ("Outcome-based design with measurable
+    targets") on Environmental and Noise Controls, and that it also values I3o2 ("Tiered requirements
+    with graduated thresholds") on Deployment Footprint.

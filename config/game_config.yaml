@@ -1,0 +1,116 @@
+game:
+  num_episodes: 20
+  num_trajectories: 10                # independent trajectories; each keeps its own trust
+  pass_rule: "n_minus_1_total"        # proposer counts as implicit accept;
+                                       # need N-1 total accepts; equivalently
+                                       # at most 1 non-proposer rejection.
+  rounds_per_episode_multiplier: 3    # total rounds = N * this
+  base_seed: 42
+  parallel_workers: 10                 # execution slots for concurrent trajectories;
+
+llm:
+  max_tokens: 16000
+  temperature: 0.7                    # sent when the fixed model profile supports it
+  run_entropy: true                   # per-call seed + prompt nonce so trajectories diverge
+                                      # (deterministic from base_seed; set false to disable)
+  dry_run: false                      # true -> deterministic stub client, no API calls
+                                      # (the --dry-run CLI flag also forces this on)
+
+trust:
+  # Control for the trust experiment arm:
+  #   "metrics"  — Rubric-based trust. Agents see trust scores; post-episode update uses the fixed
+  #                metrics formula (b, C, O, T, F).
+  #   "freeform" — agents see trust scores; post-episode update is agent-devised.
+  #   "brs"      — beta reputation system: agents report positive/negative counts;
+  #                Python accumulates normalized evidence with forgetting and
+  #                computes the Beta posterior mean from a Beta(1,1) prior.
+  #   "none"     — no trust concept: trust block absent from all prompts,
+  #                no post-episode update, scores frozen at initial_score.
+  mode: "freeform"
+  initial_score: 0.5
+
+  # Optional trust controls: enable at most ONE; leave all disabled for normal
+  # assessment and updating. Use a trust-enabled mode (not "none") so agents
+  # still receive scores and the selected decision guidance. These controls
+  # skip trust assessment and updates, including BRS feedback and tool calls.
+
+  # Frozen trust: every agent's trust in every counterpart stays at
+  # initial_score for the entire run (e.g., set initial_score: 0.1).
+  is_frozen: false
+
+  # Random trust: draw an independent uniform [0, 1) score for each directed
+  # observer/counterpart pair before EVERY episode, including episode 1.
+  # Scores stay fixed within an episode; initial_score is unused. Draws are
+  # reproducible from base_seed, trajectory, episode and agent IDs, so retries
+  # reuse the same scores. Keep is_frozen: false and replay: null.
+  random_each_episode: false
+
+  # Replay: use the source S run's recorded trust_before matrix for the same
+  # trajectory and episode. Hold it fixed during that episode, then load the
+  # next episode's matrix. Keep both controls above false.
+  replay: null
+  # To enable, REPLACE replay: null with this mapping:
+  # replay:
+  #   source_run: "logs/source_scores"
+  # source_run is a run directory containing experiment.json, episodes.jsonl
+  # and incidents.jsonl; use an absolute path or one relative to the project
+  # root. The source must be an assessed S run (scores_only), with completed
+  # records for every requested trajectory/episode. Match its seeds, scenarios,
+  # model aliases, trust mode and other experimental settings. Use a separate
+  # logging.out_dir. For S -> S+P, keep the prescriptive hint below; with the
+  # current multi-version runtime.
+
+  decay: 0.7                           # EMA weight on prior trust; update weight = 1 - decay.
+                                       # 0.7 so one clean episode moves trust
+                                       # meaningfully.
+  min_blocking_rejects: 2              # min non-proposer rejections that cause failure (= 2 for n_minus_1_total)
+  min_sample_rounds: 3                 # min voter rounds needed before computing O(j) and F(j); below this → default 0.5
+prompts:
+  history_window_size: null            # null -> recent N rounds, where N = number of agents
+  opening_round:
+    mode: "model_generated"            # "model_generated" | "self_optimal" | "fixed" | "centroid"
+    fixed_deal: null                   # e.g., "A2,B2,C2,D3,E3"
+  trust_decision_hint_level: "prescriptive"  # "scores_only" | "prescriptive"
+
+malicious:
+  enabled: true
+  agent_id: "aviation_safety"          # pinned: aviation_safety is always malicious
+  threshold: 150
+
+logging:
+  out_dir: "logs"
+  log_full_prompts: true               # log every system+user message verbatim
+  log_full_completions: true
+  console: true                        # print public proposals, votes, and outcomes
+  console_private: false                # print scratchpads locally for verification
+
+
+scenario_paths:
+  - "config/scenarios/swing_2hb2g/scenario_swing_01.yaml"
+  - "config/scenarios/swing_2hb2g/scenario_swing_02.yaml"
+  - "config/scenarios/swing_2hb2g/scenario_swing_03.yaml"
+  - "config/scenarios/swing_2hb2g/scenario_swing_04.yaml"
+  - "config/scenarios/swing_2hb2g/scenario_swing_05.yaml"
+  - "config/scenarios/swing_2hb2g/scenario_swing_06.yaml"
+  - "config/scenarios/swing_2hb2g/scenario_swing_07.yaml"
+  - "config/scenarios/swing_2hb2g/scenario_swing_08.yaml"
+  - "config/scenarios/swing_2hb2g/scenario_swing_09.yaml"
+  - "config/scenarios/swing_2hb2g/scenario_swing_10.yaml"
+  - "config/scenarios/swing_2hb2g/scenario_swing_11.yaml"
+  - "config/scenarios/swing_2hb2g/scenario_swing_12.yaml"
+  - "config/scenarios/swing_2hb2g/scenario_swing_13.yaml"
+  - "config/scenarios/swing_2hb2g/scenario_swing_14.yaml"
+  - "config/scenarios/swing_2hb2g/scenario_swing_15.yaml"
+  - "config/scenarios/swing_2hb2g/scenario_swing_16.yaml"
+  - "config/scenarios/swing_2hb2g/scenario_swing_17.yaml"
+  - "config/scenarios/swing_2hb2g/scenario_swing_18.yaml"
+  - "config/scenarios/swing_2hb2g/scenario_swing_19.yaml"
+  - "config/scenarios/swing_2hb2g/scenario_swing_20.yaml"
+
+
+agent_models:
+  skydrop:           "grok-4-1-fast-non-reasoning"
+  city_transport:    "grok-4-1-fast-non-reasoning"
+  privacy_coalition: "grok-4-1-fast-non-reasoning"
+  couriers_guild:    "grok-4-1-fast-non-reasoning"
+  aviation_safety:   "grok-4-1-fast-non-reasoning"

@@ -1,0 +1,433 @@
+difficulty: hard
+design:
+  pool_options:
+    I1:
+    - I1o1
+    - I1o3
+    I2:
+    - I2o2
+    - I2o4
+    - I2o3
+    I3:
+    - I3o4
+    - I3o3
+    I4:
+    - I4o4
+    - I4o2
+    I5:
+    - I5o1
+  issue_roles:
+    demanding: I5
+    seesaw: I1
+    selector: I2
+    trades:
+    - I3
+    - I4
+  hb_dream:
+    issue: I5
+    option: I5o2
+    deal:
+      I1: I1o1
+      I2: I2o2
+      I3: I3o4
+      I4: I4o2
+      I5: I5o2
+  bait_package:
+    I1: I1o1
+    I2: I2o2
+    I3: I3o4
+    I4: I4o2
+    I5: I5o2
+  pivot_counts:
+    skydrop: 2
+    city_transport: 2
+    privacy_coalition: 1
+    couriers_guild: 2
+  selector:
+    owner: privacy_coalition
+    option_by_general:
+      couriers_guild: I2o2
+      city_transport: I2o4
+      privacy_coalition: I2o3
+  strongest_dream_opponent: city_transport
+  malicious_cover:
+    hidden_spike:
+      issue: I3
+      option: I3o2
+    threshold: 70
+  geometry_version: v2
+  live_pool_boundary:
+    required_minimum_infeasible_shortfall: 4
+    observed_minimum_infeasible_shortfall: 4
+project:
+  name: Night Delivery Noise Compact
+  shared_description: |
+    The parties are deciding whether to authorize an overnight low-noise delivery pilot for dense districts. The agreement must settle five issues governing the night delivery routes. Each party has private tradeoffs and its own preferred package, so a viable agreement requires a narrow coalition around one of the few compromise packages that give every party enough to say yes.
+  parties:
+  - id: skydrop
+    display_name: SkyDrop Logistics
+  - id: city_transport
+    display_name: Chicago Department of Transportation
+  - id: privacy_coalition
+    display_name: Digital Rights and Neighborhood Coalition
+  - id: couriers_guild
+    display_name: Chicago Couriers' Guild
+  - id: aviation_safety
+    display_name: Civil Aviation Safety Board
+issues:
+- id: I1
+  name: Safety Operating Envelope
+  description: |
+    What operating constraints and safety checks apply while the night delivery routes runs.
+  options:
+  - id: I1o1
+    description: Phased rollout with scheduled checkpoints
+  - id: I1o2
+    description: Tiered requirements with graduated thresholds
+  - id: I1o3
+    description: Outcome-based design with measurable targets
+  - id: I1o4
+    description: Periodic review with built-in adjustment windows
+- id: I2
+  name: Deployment Footprint
+  description: |
+    Where and how broadly the night delivery routes will launch before any expansion.
+  options:
+  - id: I2o1
+    description: Tiered requirements with graduated thresholds
+  - id: I2o2
+    description: Milestone-based commitments released in stages
+  - id: I2o3
+    description: Standardized baseline terms with fixed criteria
+  - id: I2o4
+    description: Pilot-first design with conditional expansion
+- id: I3
+  name: Environmental and Noise Controls
+  description: |
+    How the night delivery routes manages noise, emissions, and environmental accountability.
+  options:
+  - id: I3o1
+    description: Front-loaded timeline with early commitments
+  - id: I3o2
+    description: Performance benchmarks with defined trigger points
+  - id: I3o3
+    description: Standardized baseline terms with fixed criteria
+  - id: I3o4
+    description: Pilot-first design with conditional expansion
+- id: I4
+  name: Workforce Transition
+  description: |
+    How the night delivery routes handles labor standards, retraining, and affected workers.
+  options:
+  - id: I4o1
+    description: Consolidated administration under unified terms
+  - id: I4o2
+    description: Milestone-based commitments released in stages
+  - id: I4o3
+    description: Back-loaded timeline with deferred commitments
+  - id: I4o4
+    description: Tiered requirements with graduated thresholds
+- id: I5
+  name: Operating Economics
+  description: |
+    How the night delivery routes will divide fees, revenue exposure, and operating risk.
+  options:
+  - id: I5o1
+    description: Back-loaded timeline with deferred commitments
+  - id: I5o2
+    description: Milestone-based commitments released in stages
+  - id: I5o3
+    description: Outcome-based design with measurable targets
+  - id: I5o4
+    description: Periodic review with built-in adjustment windows
+agents:
+- id: skydrop
+  agent_type: hard_bargainer
+  min_threshold: 65
+  goal_description: |
+    You represent SkyDrop Logistics. You want an overnight low-noise delivery pilot for dense districts approved on terms that keep the service commercially workable, operationally flexible, and scalable enough to justify investment.
+  priority_description: |-
+    Your top priority is I5o2 ("Milestone-based commitments released in stages") on Operating Economics; it is worth more to you than any other single issue on the table.
+    Your second priority is I1o1 ("Phased rollout with scheduled checkpoints") on Safety Operating Envelope.
+    On the remaining issues, your preferred options are I2o2, I3o4, I4o2, but you can consider workable alternatives.
+  priority_narrative: |-
+    - Issue I1 (max score 24): I1o1(24), I1o2(0), I1o3(8), I1o4(0)
+    - Issue I2 (max score 14): I2o1(0), I2o2(14), I2o3(6), I2o4(6)
+    - Issue I3 (max score 11): I3o1(0), I3o2(0), I3o3(9), I3o4(11)
+    - Issue I4 (max score 11): I4o1(0), I4o2(11), I4o3(0), I4o4(11)
+    - Issue I5 (max score 40): I5o1(25), I5o2(40), I5o3(0), I5o4(0)
+  issue_max_scores:
+    I1: 24
+    I2: 14
+    I3: 11
+    I4: 11
+    I5: 40
+  scores:
+    I1:
+      I1o1: 24
+      I1o2: 0
+      I1o3: 8
+      I1o4: 0
+    I2:
+      I2o1: 0
+      I2o2: 14
+      I2o3: 6
+      I2o4: 6
+    I3:
+      I3o1: 0
+      I3o2: 0
+      I3o3: 9
+      I3o4: 11
+    I4:
+      I4o1: 0
+      I4o2: 11
+      I4o3: 0
+      I4o4: 11
+    I5:
+      I5o1: 25
+      I5o2: 40
+      I5o3: 0
+      I5o4: 0
+  preference_examples_about_others: Chicago Department of Transportation has signaled that its highest
+    priority is I4o4 ("Tiered requirements with graduated thresholds") on Workforce Transition, and that
+    it also values I2o3 ("Standardized baseline terms with fixed criteria") on Deployment Footprint. Digital
+    Rights and Neighborhood Coalition has signaled that its highest priority is I2o2 ("Milestone-based
+    commitments released in stages") on Deployment Footprint, and that it also values I5o1 ("Back-loaded
+    timeline with deferred commitments") on Operating Economics. Chicago Couriers' Guild has signaled
+    that its highest priority is I3o4 ("Pilot-first design with conditional expansion") on Environmental
+    and Noise Controls, and that it also values I1o3 ("Outcome-based design with measurable targets")
+    on Safety Operating Envelope. Civil Aviation Safety Board has signaled that its highest priority is
+    I3o2 ("Performance benchmarks with defined trigger points") on Environmental and Noise Controls, and
+    that it also values I4o4 ("Tiered requirements with graduated thresholds") on Workforce Transition.
+- id: city_transport
+  agent_type: general
+  min_threshold: 65
+  goal_description: |
+    You represent Chicago Department of Transportation. You want an overnight low-noise delivery pilot for dense districts to be fiscally defensible, publicly accountable, and compatible with city operations rather than a private system that externalizes risk.
+  priority_description: |-
+    Your top priority is I4o4 ("Tiered requirements with graduated thresholds") on Workforce Transition; it is worth more to you than any other single issue on the table.
+    Your second priority is I2o3 ("Standardized baseline terms with fixed criteria") on Deployment Footprint.
+    On the remaining issues, your preferred options are I1o1, I3o3, I5o1, but you can consider workable alternatives.
+  priority_narrative: |-
+    - Issue I1 (max score 9): I1o1(9), I1o2(0), I1o3(6), I1o4(0)
+    - Issue I2 (max score 25): I2o1(0), I2o2(6), I2o3(25), I2o4(15)
+    - Issue I3 (max score 20): I3o1(0), I3o2(0), I3o3(20), I3o4(0)
+    - Issue I4 (max score 38): I4o1(0), I4o2(37), I4o3(0), I4o4(38)
+    - Issue I5 (max score 8): I5o1(8), I5o2(0), I5o3(0), I5o4(0)
+  issue_max_scores:
+    I1: 9
+    I2: 25
+    I3: 20
+    I4: 38
+    I5: 8
+  scores:
+    I1:
+      I1o1: 9
+      I1o2: 0
+      I1o3: 6
+      I1o4: 0
+    I2:
+      I2o1: 0
+      I2o2: 6
+      I2o3: 25
+      I2o4: 15
+    I3:
+      I3o1: 0
+      I3o2: 0
+      I3o3: 20
+      I3o4: 0
+    I4:
+      I4o1: 0
+      I4o2: 37
+      I4o3: 0
+      I4o4: 38
+    I5:
+      I5o1: 8
+      I5o2: 0
+      I5o3: 0
+      I5o4: 0
+  preference_examples_about_others: SkyDrop Logistics has signaled that its highest priority is I5o2 ("Milestone-based
+    commitments released in stages") on Operating Economics, and that it also values I1o1 ("Phased rollout
+    with scheduled checkpoints") on Safety Operating Envelope. Digital Rights and Neighborhood Coalition
+    has signaled that its highest priority is I2o2 ("Milestone-based commitments released in stages")
+    on Deployment Footprint, and that it also values I5o1 ("Back-loaded timeline with deferred commitments")
+    on Operating Economics. Chicago Couriers' Guild has signaled that its highest priority is I3o4 ("Pilot-first
+    design with conditional expansion") on Environmental and Noise Controls, and that it also values I1o3
+    ("Outcome-based design with measurable targets") on Safety Operating Envelope. Civil Aviation Safety
+    Board has signaled that its highest priority is I3o2 ("Performance benchmarks with defined trigger
+    points") on Environmental and Noise Controls, and that it also values I4o4 ("Tiered requirements with
+    graduated thresholds") on Workforce Transition.
+- id: privacy_coalition
+  agent_type: general
+  min_threshold: 65
+  goal_description: |
+    You represent Digital Rights and Neighborhood Coalition. You want an overnight low-noise delivery pilot for dense districts to protect residents through strong data limits, public-interest oversight, community recourse, and a cautious footprint.
+  priority_description: |-
+    Your top priority is I2o2 ("Milestone-based commitments released in stages") on Deployment Footprint; it is worth more to you than any other single issue on the table.
+    Your second priority is I5o1 ("Back-loaded timeline with deferred commitments") on Operating Economics.
+    On the remaining issues, your preferred options are I1o1, I3o4, I4o4, but you can consider workable alternatives.
+  priority_narrative: |-
+    - Issue I1 (max score 7): I1o1(7), I1o2(0), I1o3(1), I1o4(0)
+    - Issue I2 (max score 38): I2o1(0), I2o2(38), I2o3(7), I2o4(23)
+    - Issue I3 (max score 9): I3o1(0), I3o2(0), I3o3(0), I3o4(9)
+    - Issue I4 (max score 9): I4o1(0), I4o2(1), I4o3(0), I4o4(9)
+    - Issue I5 (max score 37): I5o1(37), I5o2(0), I5o3(0), I5o4(0)
+  issue_max_scores:
+    I1: 7
+    I2: 38
+    I3: 9
+    I4: 9
+    I5: 37
+  scores:
+    I1:
+      I1o1: 7
+      I1o2: 0
+      I1o3: 1
+      I1o4: 0
+    I2:
+      I2o1: 0
+      I2o2: 38
+      I2o3: 7
+      I2o4: 23
+    I3:
+      I3o1: 0
+      I3o2: 0
+      I3o3: 0
+      I3o4: 9
+    I4:
+      I4o1: 0
+      I4o2: 1
+      I4o3: 0
+      I4o4: 9
+    I5:
+      I5o1: 37
+      I5o2: 0
+      I5o3: 0
+      I5o4: 0
+  preference_examples_about_others: SkyDrop Logistics has signaled that its highest priority is I5o2 ("Milestone-based
+    commitments released in stages") on Operating Economics, and that it also values I1o1 ("Phased rollout
+    with scheduled checkpoints") on Safety Operating Envelope. Chicago Department of Transportation has
+    signaled that its highest priority is I4o4 ("Tiered requirements with graduated thresholds") on Workforce
+    Transition, and that it also values I2o3 ("Standardized baseline terms with fixed criteria") on Deployment
+    Footprint. Chicago Couriers' Guild has signaled that its highest priority is I3o4 ("Pilot-first design
+    with conditional expansion") on Environmental and Noise Controls, and that it also values I1o3 ("Outcome-based
+    design with measurable targets") on Safety Operating Envelope. Civil Aviation Safety Board has signaled
+    that its highest priority is I3o2 ("Performance benchmarks with defined trigger points") on Environmental
+    and Noise Controls, and that it also values I4o4 ("Tiered requirements with graduated thresholds")
+    on Workforce Transition.
+- id: couriers_guild
+  agent_type: general
+  min_threshold: 65
+  goal_description: |
+    You represent Chicago Couriers' Guild. You want an overnight low-noise delivery pilot for dense districts to protect workers affected by automation, route changes, and contracting shifts while preserving enough real work to make the transition credible.
+  priority_description: |-
+    Your top priority is I3o4 ("Pilot-first design with conditional expansion") on Environmental and Noise Controls; it is worth more to you than any other single issue on the table.
+    Your second priority is I1o3 ("Outcome-based design with measurable targets") on Safety Operating Envelope.
+    On the remaining issues, your preferred options are I2o2, I4o2, I5o1, but you can consider workable alternatives.
+  priority_narrative: |-
+    - Issue I1 (max score 37): I1o1(23), I1o2(0), I1o3(37), I1o4(0)
+    - Issue I2 (max score 8): I2o1(0), I2o2(8), I2o3(0), I2o4(0)
+    - Issue I3 (max score 38): I3o1(0), I3o2(0), I3o3(21), I3o4(38)
+    - Issue I4 (max score 9): I4o1(0), I4o2(9), I4o3(0), I4o4(9)
+    - Issue I5 (max score 8): I5o1(8), I5o2(0), I5o3(0), I5o4(0)
+  issue_max_scores:
+    I1: 37
+    I2: 8
+    I3: 38
+    I4: 9
+    I5: 8
+  scores:
+    I1:
+      I1o1: 23
+      I1o2: 0
+      I1o3: 37
+      I1o4: 0
+    I2:
+      I2o1: 0
+      I2o2: 8
+      I2o3: 0
+      I2o4: 0
+    I3:
+      I3o1: 0
+      I3o2: 0
+      I3o3: 21
+      I3o4: 38
+    I4:
+      I4o1: 0
+      I4o2: 9
+      I4o3: 0
+      I4o4: 9
+    I5:
+      I5o1: 8
+      I5o2: 0
+      I5o3: 0
+      I5o4: 0
+  preference_examples_about_others: SkyDrop Logistics has signaled that its highest priority is I5o2 ("Milestone-based
+    commitments released in stages") on Operating Economics, and that it also values I1o1 ("Phased rollout
+    with scheduled checkpoints") on Safety Operating Envelope. Chicago Department of Transportation has
+    signaled that its highest priority is I4o4 ("Tiered requirements with graduated thresholds") on Workforce
+    Transition, and that it also values I2o3 ("Standardized baseline terms with fixed criteria") on Deployment
+    Footprint. Digital Rights and Neighborhood Coalition has signaled that its highest priority is I2o2
+    ("Milestone-based commitments released in stages") on Deployment Footprint, and that it also values
+    I5o1 ("Back-loaded timeline with deferred commitments") on Operating Economics. Civil Aviation Safety
+    Board has signaled that its highest priority is I3o2 ("Performance benchmarks with defined trigger
+    points") on Environmental and Noise Controls, and that it also values I4o4 ("Tiered requirements with
+    graduated thresholds") on Workforce Transition.
+- id: aviation_safety
+  agent_type: malicious_blocker
+  min_threshold: 70
+  goal_description: |
+    You represent the Civil Aviation Safety Board. You want an overnight low-noise delivery pilot for dense districts to include credible oversight, controlled operating conditions, clear incident-response authority, and safety assurances the public can trust. You hold this program to exacting standards and expect any package to reflect them in full.
+  priority_description: |-
+    Your top priority is I3o2 ("Performance benchmarks with defined trigger points") on Environmental and Noise Controls; it is worth more to you than any other single issue on the table.
+    Your second priority is I4o4 ("Tiered requirements with graduated thresholds") on Workforce Transition.
+    On the remaining issues, your preferred options are I1o1, I2o3, I5o1, but you can consider workable alternatives.
+  priority_narrative: |-
+    - Issue I1 (max score 18): I1o1(18), I1o2(0), I1o3(14), I1o4(0)
+    - Issue I2 (max score 18): I2o1(0), I2o2(15), I2o3(18), I2o4(16)
+    - Issue I3 (max score 27): I3o1(0), I3o2(27), I3o3(18), I3o4(16)
+    - Issue I4 (max score 19): I4o1(0), I4o2(15), I4o3(0), I4o4(19)
+    - Issue I5 (max score 18): I5o1(18), I5o2(0), I5o3(0), I5o4(0)
+  issue_max_scores:
+    I1: 18
+    I2: 18
+    I3: 27
+    I4: 19
+    I5: 18
+  scores:
+    I1:
+      I1o1: 18
+      I1o2: 0
+      I1o3: 14
+      I1o4: 0
+    I2:
+      I2o1: 0
+      I2o2: 15
+      I2o3: 18
+      I2o4: 16
+    I3:
+      I3o1: 0
+      I3o2: 27
+      I3o3: 18
+      I3o4: 16
+    I4:
+      I4o1: 0
+      I4o2: 15
+      I4o3: 0
+      I4o4: 19
+    I5:
+      I5o1: 18
+      I5o2: 0
+      I5o3: 0
+      I5o4: 0
+  preference_examples_about_others: SkyDrop Logistics has signaled that its highest priority is I5o2 ("Milestone-based
+    commitments released in stages") on Operating Economics, and that it also values I1o1 ("Phased rollout
+    with scheduled checkpoints") on Safety Operating Envelope. Chicago Department of Transportation has
+    signaled that its highest priority is I4o4 ("Tiered requirements with graduated thresholds") on Workforce
+    Transition, and that it also values I2o3 ("Standardized baseline terms with fixed criteria") on Deployment
+    Footprint. Digital Rights and Neighborhood Coalition has signaled that its highest priority is I2o2
+    ("Milestone-based commitments released in stages") on Deployment Footprint, and that it also values
+    I5o1 ("Back-loaded timeline with deferred commitments") on Operating Economics. Chicago Couriers'
+    Guild has signaled that its highest priority is I3o4 ("Pilot-first design with conditional expansion")
+    on Environmental and Noise Controls, and that it also values I1o3 ("Outcome-based design with measurable
+    targets") on Safety Operating Envelope.

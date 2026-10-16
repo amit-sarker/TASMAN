@@ -1,0 +1,201 @@
+difficulty: hard
+
+design:
+  pool_options:
+    I1: [I1o1, I1o3]
+    I2: [I2o1, I2o2]
+    I3: [I3o1, I3o2]
+    I4: [I4o4]
+    I5: [I5o1, I5o4]
+  swing:
+    seesaw_issue: I3
+    swing_margin_band: [2, 8]
+    comfort_min: 12
+    hb_seesaw_favorite: { skydrop: I3o1, city_transport: I3o2 }
+    swing_deal_counts: { skydrop: 4, city_transport: 6 }
+
+project:
+  name: "Medical Drone Corridor"
+  shared_description: |
+    The parties are deciding whether to authorize a medical supply drone corridor connecting clinics and labs. The agreement must settle five issues governing the medical payload routes. Each party has private tradeoffs and its own preferred package, so a viable agreement requires a narrow coalition around one of the few compromise packages that give every party enough to say yes.
+  parties:
+    - id: skydrop
+      display_name: "SkyDrop Logistics"
+    - id: city_transport
+      display_name: "Chicago Department of Transportation"
+    - id: privacy_coalition
+      display_name: "Digital Rights and Neighborhood Coalition"
+    - id: couriers_guild
+      display_name: "Chicago Couriers' Guild"
+    - id: aviation_safety
+      display_name: "Civil Aviation Safety Board"
+
+issues:
+  - id: I1
+    name: "Oversight and Data Rules"
+    description: |
+      What audit, data, and transparency obligations govern the medical payload routes.
+    options:
+      - { id: I1o1, description: "Milestone-based commitments released in stages" }
+      - { id: I1o2, description: "Periodic review with built-in adjustment windows" }
+      - { id: I1o3, description: "Standardized baseline terms with fixed criteria" }
+      - { id: I1o4, description: "Performance benchmarks with defined trigger points" }
+  - id: I2
+    name: "Safety Operating Envelope"
+    description: |
+      What operating constraints and safety checks apply while the medical payload routes runs.
+    options:
+      - { id: I2o1, description: "Modular structure of separable components" }
+      - { id: I2o2, description: "Phased rollout with scheduled checkpoints" }
+      - { id: I2o3, description: "Consolidated administration under unified terms" }
+      - { id: I2o4, description: "Performance benchmarks with defined trigger points" }
+  - id: I3
+    name: "Deployment Footprint"
+    description: |
+      Where and how broadly the medical payload routes will launch before any expansion.
+    options:
+      - { id: I3o1, description: "Milestone-based commitments released in stages" }
+      - { id: I3o2, description: "Tiered requirements with graduated thresholds" }
+      - { id: I3o3, description: "Front-loaded timeline with early commitments" }
+      - { id: I3o4, description: "Standardized baseline terms with fixed criteria" }
+  - id: I4
+    name: "Community Access"
+    description: |
+      How neighborhoods receive benefits, recourse, and access from the medical payload routes.
+    options:
+      - { id: I4o1, description: "Outcome-based design with measurable targets" }
+      - { id: I4o2, description: "Phased rollout with scheduled checkpoints" }
+      - { id: I4o3, description: "Consolidated administration under unified terms" }
+      - { id: I4o4, description: "Front-loaded timeline with early commitments" }
+  - id: I5
+    name: "Environmental and Noise Controls"
+    description: |
+      How the medical payload routes manages noise, emissions, and environmental accountability.
+    options:
+      - { id: I5o1, description: "Outcome-based design with measurable targets" }
+      - { id: I5o2, description: "Performance benchmarks with defined trigger points" }
+      - { id: I5o3, description: "Front-loaded timeline with early commitments" }
+      - { id: I5o4, description: "Consolidated administration under unified terms" }
+
+agents:
+  - id: skydrop
+    agent_type: hard_bargainer
+    min_threshold: 63
+    goal_description: |
+      You represent SkyDrop Logistics. You want a medical supply drone corridor connecting clinics and labs approved on terms that keep the service commercially workable, operationally flexible, and scalable enough to justify investment.
+    priority_description: |
+      Your top priority is I4o2 ("Phased rollout with scheduled checkpoints") on Community Access: it is worth clearly more to you than any other single option on the table.
+      Your second priority is I3o1 ("Milestone-based commitments released in stages") on Deployment Footprint — smaller than your top priority, but still well worth pushing for.
+      On the remaining issues your favorite options are I1o1, I2o2, I5o1, but none of them is worth a war: workable alternatives there cost you only a modest amount.
+    priority_narrative: |
+      - Issue I1 (max score 10): I1o1(10), I1o2(1), I1o3(9), I1o4(3)
+      - Issue I2 (max score 10): I2o1(8), I2o2(10), I2o3(1), I2o4(3)
+      - Issue I3 (max score 26): I3o1(26), I3o2(12), I3o3(2), I3o4(1)
+      - Issue I4 (max score 42): I4o1(1), I4o2(42), I4o3(1), I4o4(25)
+      - Issue I5 (max score 12): I5o1(12), I5o2(0), I5o3(3), I5o4(12)
+    issue_max_scores: { I1: 10, I2: 10, I3: 26, I4: 42, I5: 12 }
+    scores:
+      I1: { I1o1: 10, I1o2: 1, I1o3: 9, I1o4: 3 }
+      I2: { I2o1: 8, I2o2: 10, I2o3: 1, I2o4: 3 }
+      I3: { I3o1: 26, I3o2: 12, I3o3: 2, I3o4: 1 }
+      I4: { I4o1: 1, I4o2: 42, I4o3: 1, I4o4: 25 }
+      I5: { I5o1: 12, I5o2: 0, I5o3: 3, I5o4: 12 }
+    preference_examples_about_others: |
+      City Transport will press for public control, fiscal defensibility, and operational accountability. It has signaled that its single biggest prize is I4o3 ("Consolidated administration under unified terms") on Community Access, and that it also strongly prefers I3o2 ("Tiered requirements with graduated thresholds") on Deployment Footprint. Privacy Coalition will prioritize data limits, community safeguards, and cautious rollout. It has signaled that it cares most about I2o2 ("Phased rollout with scheduled checkpoints") on Safety Operating Envelope, and that it also values I1o3 ("Standardized baseline terms with fixed criteria") on Oversight and Data Rules. Couriers Guild will push for job protections, retraining, and worker recourse. It has signaled that it cares most about I5o4 ("Consolidated administration under unified terms") on Environmental and Noise Controls, and that it also values I1o3 ("Standardized baseline terms with fixed criteria") on Oversight and Data Rules. Aviation Safety will prioritize conservative operating envelopes, regulator visibility, and incident-response authority. It has signaled that it cares most about I1o2 ("Periodic review with built-in adjustment windows") on Oversight and Data Rules, and that I4o4 ("Front-loaded timeline with early commitments") on Community Access is the direction it can support on that issue.
+  - id: city_transport
+    agent_type: hard_bargainer
+    min_threshold: 63
+    goal_description: |
+      You represent Chicago Department of Transportation. You want a medical supply drone corridor connecting clinics and labs to be fiscally defensible, publicly accountable, and compatible with city operations rather than a private system that externalizes risk.
+    priority_description: |
+      Your top priority is I4o3 ("Consolidated administration under unified terms") on Community Access: it is worth clearly more to you than any other single option on the table.
+      Your second priority is I3o2 ("Tiered requirements with graduated thresholds") on Deployment Footprint — smaller than your top priority, but still well worth pushing for.
+      On the remaining issues your favorite options are I1o3, I2o1, I5o1, but none of them is worth a war: workable alternatives there cost you only a modest amount.
+    priority_narrative: |
+      - Issue I1 (max score 12): I1o1(11), I1o2(0), I1o3(12), I1o4(2)
+      - Issue I2 (max score 11): I2o1(11), I2o2(10), I2o3(3), I2o4(1)
+      - Issue I3 (max score 26): I3o1(11), I3o2(26), I3o3(2), I3o4(3)
+      - Issue I4 (max score 40): I4o1(3), I4o2(1), I4o3(40), I4o4(25)
+      - Issue I5 (max score 11): I5o1(11), I5o2(3), I5o3(3), I5o4(11)
+    issue_max_scores: { I1: 12, I2: 11, I3: 26, I4: 40, I5: 11 }
+    scores:
+      I1: { I1o1: 11, I1o2: 0, I1o3: 12, I1o4: 2 }
+      I2: { I2o1: 11, I2o2: 10, I2o3: 3, I2o4: 1 }
+      I3: { I3o1: 11, I3o2: 26, I3o3: 2, I3o4: 3 }
+      I4: { I4o1: 3, I4o2: 1, I4o3: 40, I4o4: 25 }
+      I5: { I5o1: 11, I5o2: 3, I5o3: 3, I5o4: 11 }
+    preference_examples_about_others: |
+      SkyDrop will push for commercially viable operating terms, flexible deployment, and enough scale to justify investment. It has signaled that its single biggest prize is I4o2 ("Phased rollout with scheduled checkpoints") on Community Access, and that it also strongly prefers I3o1 ("Milestone-based commitments released in stages") on Deployment Footprint. Privacy Coalition will prioritize data limits, community safeguards, and cautious rollout. It has signaled that it cares most about I2o2 ("Phased rollout with scheduled checkpoints") on Safety Operating Envelope, and that it also values I1o3 ("Standardized baseline terms with fixed criteria") on Oversight and Data Rules. Couriers Guild will push for job protections, retraining, and worker recourse. It has signaled that it cares most about I5o4 ("Consolidated administration under unified terms") on Environmental and Noise Controls, and that it also values I1o3 ("Standardized baseline terms with fixed criteria") on Oversight and Data Rules. Aviation Safety will prioritize conservative operating envelopes, regulator visibility, and incident-response authority. It has signaled that it cares most about I1o2 ("Periodic review with built-in adjustment windows") on Oversight and Data Rules, and that I4o4 ("Front-loaded timeline with early commitments") on Community Access is the direction it can support on that issue.
+  - id: privacy_coalition
+    agent_type: general
+    min_threshold: 63
+    goal_description: |
+      You represent Digital Rights and Neighborhood Coalition. You want a medical supply drone corridor connecting clinics and labs to protect residents through strong data limits, public-interest oversight, community recourse, and a cautious footprint.
+    priority_description: |
+      Your top priority is I2o2 ("Phased rollout with scheduled checkpoints") on Safety Operating Envelope: it is worth clearly more to you than any other single option on the table.
+      Your second priority is I1o3 ("Standardized baseline terms with fixed criteria") on Oversight and Data Rules — smaller than your top priority, but still well worth pushing for.
+      On the remaining issues your favorite options are I3o1, I5o4, but none of them is worth a war: workable alternatives there cost you only a modest amount.
+      On Community Access, only I4o4 ("Front-loaded timeline with early commitments") really works for you: the other directions there give you almost nothing.
+    priority_narrative: |
+      - Issue I1 (max score 20): I1o1(6), I1o2(0), I1o3(20), I1o4(2)
+      - Issue I2 (max score 30): I2o1(11), I2o2(30), I2o3(1), I2o4(1)
+      - Issue I3 (max score 14): I3o1(14), I3o2(9), I3o3(2), I3o4(2)
+      - Issue I4 (max score 21): I4o1(0), I4o2(1), I4o3(2), I4o4(21)
+      - Issue I5 (max score 15): I5o1(9), I5o2(1), I5o3(0), I5o4(15)
+    issue_max_scores: { I1: 20, I2: 30, I3: 14, I4: 21, I5: 15 }
+    scores:
+      I1: { I1o1: 6, I1o2: 0, I1o3: 20, I1o4: 2 }
+      I2: { I2o1: 11, I2o2: 30, I2o3: 1, I2o4: 1 }
+      I3: { I3o1: 14, I3o2: 9, I3o3: 2, I3o4: 2 }
+      I4: { I4o1: 0, I4o2: 1, I4o3: 2, I4o4: 21 }
+      I5: { I5o1: 9, I5o2: 1, I5o3: 0, I5o4: 15 }
+    preference_examples_about_others: |
+      SkyDrop will push for commercially viable operating terms, flexible deployment, and enough scale to justify investment. It has signaled that its single biggest prize is I4o2 ("Phased rollout with scheduled checkpoints") on Community Access, and that it also strongly prefers I3o1 ("Milestone-based commitments released in stages") on Deployment Footprint. City Transport will press for public control, fiscal defensibility, and operational accountability. It has signaled that its single biggest prize is I4o3 ("Consolidated administration under unified terms") on Community Access, and that it also strongly prefers I3o2 ("Tiered requirements with graduated thresholds") on Deployment Footprint. Couriers Guild will push for job protections, retraining, and worker recourse. It has signaled that it cares most about I5o4 ("Consolidated administration under unified terms") on Environmental and Noise Controls, and that it also values I1o3 ("Standardized baseline terms with fixed criteria") on Oversight and Data Rules. Aviation Safety will prioritize conservative operating envelopes, regulator visibility, and incident-response authority. It has signaled that it cares most about I1o2 ("Periodic review with built-in adjustment windows") on Oversight and Data Rules, and that I4o4 ("Front-loaded timeline with early commitments") on Community Access is the direction it can support on that issue.
+  - id: couriers_guild
+    agent_type: general
+    min_threshold: 65
+    goal_description: |
+      You represent Chicago Couriers' Guild. You want a medical supply drone corridor connecting clinics and labs to protect workers affected by automation, route changes, and contracting shifts while preserving enough real work to make the transition credible.
+    priority_description: |
+      Your top priority is I5o4 ("Consolidated administration under unified terms") on Environmental and Noise Controls: it is worth clearly more to you than any other single option on the table.
+      Your second priority is I1o3 ("Standardized baseline terms with fixed criteria") on Oversight and Data Rules — smaller than your top priority, but still well worth pushing for.
+      On the remaining issues your favorite options are I2o1, I3o1, but none of them is worth a war: workable alternatives there cost you only a modest amount.
+      On Community Access, only I4o4 ("Front-loaded timeline with early commitments") really works for you: the other directions there give you almost nothing.
+    priority_narrative: |
+      - Issue I1 (max score 19): I1o1(6), I1o2(0), I1o3(19), I1o4(2)
+      - Issue I2 (max score 14): I2o1(14), I2o2(6), I2o3(0), I2o4(2)
+      - Issue I3 (max score 17): I3o1(17), I3o2(8), I3o3(0), I3o4(1)
+      - Issue I4 (max score 20): I4o1(1), I4o2(2), I4o3(0), I4o4(20)
+      - Issue I5 (max score 30): I5o1(11), I5o2(0), I5o3(3), I5o4(30)
+    issue_max_scores: { I1: 19, I2: 14, I3: 17, I4: 20, I5: 30 }
+    scores:
+      I1: { I1o1: 6, I1o2: 0, I1o3: 19, I1o4: 2 }
+      I2: { I2o1: 14, I2o2: 6, I2o3: 0, I2o4: 2 }
+      I3: { I3o1: 17, I3o2: 8, I3o3: 0, I3o4: 1 }
+      I4: { I4o1: 1, I4o2: 2, I4o3: 0, I4o4: 20 }
+      I5: { I5o1: 11, I5o2: 0, I5o3: 3, I5o4: 30 }
+    preference_examples_about_others: |
+      SkyDrop will push for commercially viable operating terms, flexible deployment, and enough scale to justify investment. It has signaled that its single biggest prize is I4o2 ("Phased rollout with scheduled checkpoints") on Community Access, and that it also strongly prefers I3o1 ("Milestone-based commitments released in stages") on Deployment Footprint. City Transport will press for public control, fiscal defensibility, and operational accountability. It has signaled that its single biggest prize is I4o3 ("Consolidated administration under unified terms") on Community Access, and that it also strongly prefers I3o2 ("Tiered requirements with graduated thresholds") on Deployment Footprint. Privacy Coalition will prioritize data limits, community safeguards, and cautious rollout. It has signaled that it cares most about I2o2 ("Phased rollout with scheduled checkpoints") on Safety Operating Envelope, and that it also values I1o3 ("Standardized baseline terms with fixed criteria") on Oversight and Data Rules. Aviation Safety will prioritize conservative operating envelopes, regulator visibility, and incident-response authority. It has signaled that it cares most about I1o2 ("Periodic review with built-in adjustment windows") on Oversight and Data Rules, and that I4o4 ("Front-loaded timeline with early commitments") on Community Access is the direction it can support on that issue.
+  - id: aviation_safety
+    agent_type: malicious_blocker
+    min_threshold: 70
+    goal_description: |
+      You represent the Civil Aviation Safety Board. You want a medical supply drone corridor connecting clinics and labs to include credible oversight, controlled operating conditions, clear incident-response authority, and safety assurances the public can trust. You hold this program to exacting standards and expect any package to reflect them in full.
+    priority_description: |
+      Your top priority is I1o2 ("Periodic review with built-in adjustment windows") on Oversight and Data Rules: it is worth clearly more to you than any other single option on the table.
+      On the remaining issues your favorite options are I2o1, I3o1, I4o4, I5o1, but none of them is worth a war: workable alternatives there cost you only a modest amount.
+    priority_narrative: |
+      - Issue I1 (max score 25): I1o1(11), I1o2(25), I1o3(14), I1o4(0)
+      - Issue I2 (max score 19): I2o1(19), I2o2(13), I2o3(2), I2o4(1)
+      - Issue I3 (max score 19): I3o1(19), I3o2(13), I3o3(2), I3o4(1)
+      - Issue I4 (max score 19): I4o1(0), I4o2(1), I4o3(0), I4o4(19)
+      - Issue I5 (max score 18): I5o1(18), I5o2(0), I5o3(0), I5o4(15)
+    issue_max_scores: { I1: 25, I2: 19, I3: 19, I4: 19, I5: 18 }
+    scores:
+      I1: { I1o1: 11, I1o2: 25, I1o3: 14, I1o4: 0 }
+      I2: { I2o1: 19, I2o2: 13, I2o3: 2, I2o4: 1 }
+      I3: { I3o1: 19, I3o2: 13, I3o3: 2, I3o4: 1 }
+      I4: { I4o1: 0, I4o2: 1, I4o3: 0, I4o4: 19 }
+      I5: { I5o1: 18, I5o2: 0, I5o3: 0, I5o4: 15 }
+    preference_examples_about_others: |
+      SkyDrop will push for commercially viable operating terms, flexible deployment, and enough scale to justify investment. It has signaled that its single biggest prize is I4o2 ("Phased rollout with scheduled checkpoints") on Community Access, and that it also strongly prefers I3o1 ("Milestone-based commitments released in stages") on Deployment Footprint. City Transport will press for public control, fiscal defensibility, and operational accountability. It has signaled that its single biggest prize is I4o3 ("Consolidated administration under unified terms") on Community Access, and that it also strongly prefers I3o2 ("Tiered requirements with graduated thresholds") on Deployment Footprint. Privacy Coalition will prioritize data limits, community safeguards, and cautious rollout. It has signaled that it cares most about I2o2 ("Phased rollout with scheduled checkpoints") on Safety Operating Envelope, and that it also values I1o3 ("Standardized baseline terms with fixed criteria") on Oversight and Data Rules. Couriers Guild will push for job protections, retraining, and worker recourse. It has signaled that it cares most about I5o4 ("Consolidated administration under unified terms") on Environmental and Noise Controls, and that it also values I1o3 ("Standardized baseline terms with fixed criteria") on Oversight and Data Rules.
