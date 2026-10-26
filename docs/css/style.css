@@ -818,3 +818,7 @@ table.gs td { width: 40%; }
 .affil { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
 .affil-logo { display: inline-flex; }
 .affil-logo img { height: 40px; width: auto; display: block; }
+
+/* author names link to their homepages */
+.authors a { white-space: nowrap; color: var(--ink); text-decoration: none; border-bottom: 1px solid transparent; transition: color .15s, border-color .15s; }
+.authors a:hover { color: var(--accent); border-bottom-color: currentColor; }
