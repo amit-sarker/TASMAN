@@ -132,3 +132,9 @@
   .rr-root .hb-bubble::before { content: attr(data-who); display: block; font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted, #6b7280); margin: 0 0 4px 2px; }
   .rr-root .hb-pub, .rr-root .hb-xr .hb-bubble.has-priv .hb-priv { display: block; }
 }
+
+/* animation sits right under the hero; the game description is its caption */
+#game { padding-top: 8px; }
+#game .hb-root { margin-top: 0; }
+#game .hb-note { white-space: normal; max-width: 860px; margin: 14px auto 0; font-size: 14px; line-height: 1.55; }
+#game .hb-illus { display: block; margin-top: 4px; font-size: 12.5px; font-style: italic; opacity: .85; }

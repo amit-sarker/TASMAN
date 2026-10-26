@@ -13,8 +13,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/results-viz.css">
 <link rel="stylesheet" href="css/hero-v2.css">
-<link rel="stylesheet" href="css/tldr-dragon.css">
 </head>
 <body>
 
@@ -28,7 +28,6 @@
       <a href="#game">The game</a>
       <a href="#replay">Replay</a>
       <a href="#results">Results</a>
-      <a href="#findings" class="hide-sm">Findings</a>
       <a href="#cite" class="hide-sm">Cite</a>
     </div>
   </div>
@@ -42,7 +41,10 @@
     <div class="authors">
       <span>Amit Sarker</span><span>Moumita Choudhury</span><span>Saaduddin Mahmud</span><span>Shlomo Zilberstein</span>
     </div>
-    <div class="affil">University of Massachusetts Amherst</div>
+    <div class="affil">
+      <a class="affil-logo" href="https://www.umass.edu/" target="_blank" rel="noopener"><img src="figures/umass-logo.svg" alt="UMass Amherst" onerror="if(!this.dataset.png){this.dataset.png=1;this.src='figures/umass-logo.png'}else{this.parentNode.remove()}"></a>
+      <span>University of Massachusetts Amherst</span>
+    </div>
     <div class="buttons">
       <!-- TODO: replace with the arXiv URL once the paper is public -->
       <a class="btn" href="#" id="paperLink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h6"/></svg>Paper</a>
@@ -54,12 +56,17 @@
   </div>
 </header>
 
-<section id="tldr">
+<section id="game">
+  <div class="wrap">
+    <div id="heroAnim2"></div>
+    <p class="hb-note">Five parties negotiate a package of five issues. They take turns proposing, and a proposal passes with 4 of 5 votes. Each game lasts up to 15 rounds, and the same five parties play 20 games in a row. The trust each party builds in the others during one game shapes how it plays the next, and that trust is the only thing that carries over between games. <span class="hb-illus">Illustrative animation, not a real negotiation game.</span></p>
+  </div>
+</section>
+
+<section id="tldr" class="alt">
   <div class="wrap">
     <div class="sec-num">TL;DR</div>
     <h2>Strong at trusting. Weak at using it.</h2>
-    <div class="dragon-wrap" id="dragon">
-    </div>
     <div class="ex-src">A moment from real data · <code>grok-r</code>, free-form trust · game 7, round 4 · <a href="#replay" id="tldrReplay">replay it →</a></div>
     <div class="ex" id="tldrEx"></div>
     <div class="stats stats4">
@@ -71,20 +78,9 @@
   </div>
 </section>
 
-<section id="game" class="alt">
-  <div class="wrap">
-    <div class="sec-num">01 · The game</div>
-    <h2>A repeated, multi-party, multi-issue negotiation</h2>
-    <p class="lede">Five parties negotiate a package of five issues. They take turns proposing, and a proposal passes with 4 of 5 votes. Each game lasts up to 15 rounds, and the same five parties play 20 games in a row. The trust each party builds in the others during one game shapes how it plays the next, and that trust is the only thing that carries over between games.</p>
-
-    <div id="heroAnim2"></div>
-    <p class="hb-note">An illustrative animation of the game and the trust–agreement gap, not based on a real negotiation game.</p>
-  </div>
-</section>
-
 <section id="replay">
   <div class="wrap">
-    <div class="sec-num">02 · Replay</div>
+    <div class="sec-num">01 · Replay</div>
     <h2>Watch a real game</h2>
     <p class="lede">Real data from one trajectory: the same five parties play 20 games in a row. Pick a game, then press Play. Every line is verbatim.</p>
     <div class="replay-head" id="replayHead"></div>
@@ -124,27 +120,18 @@
   </div>
 </section>
 
-<section id="results" class="alt">
+<section id="results">
   <div class="wrap">
-    <div class="sec-num">03 · Results</div>
-    <h2>Accurate trust, unused</h2>
-    <p class="lede">Results for the two reasoning models whose baselines leave room for trust to help, <code>gemini-r</code> and <code>grok-r</code>.</p>
-    <div id="story"></div>
-  </div>
-</section>
-
-<section id="findings">
-  <div class="wrap">
-    <div class="sec-num">04 · Behavior</div>
-    <h2>What trust changes in the agents' reasoning</h2>
-    <p class="lede">We compared the private reasoning of trust-aware and trust-agnostic agents. The quotes below come from the game in the replay; click a source to jump to that round.</p>
-    <div class="findings" id="findingsGrid"></div>
+    <div class="sec-num">02 · Results</div>
+    <h2>The trust–agreement gap</h2>
+    <p class="lede">The paper's main findings in four pictures, for <code>gemini-r</code> and <code>grok-r</code>, the two reasoning models whose baselines leave room for trust to help.</p>
+    <div id="resViz"></div>
   </div>
 </section>
 
 <section id="cite" class="alt">
   <div class="wrap narrow">
-    <div class="sec-num">05 · Cite</div>
+    <div class="sec-num">03 · Cite</div>
     <h2>BibTeX</h2>
     <pre class="bib" id="bib"><button class="copy" id="copyBib">Copy</button>@article{sarker2026knowing,
   title   = {Knowing Whom to Trust is not Enough: The Trust--Agreement Gap
@@ -161,7 +148,6 @@
 <footer>
   <div class="wrap">
     <div><b style="color:var(--ink)">TASMAN</b> · University of Massachusetts Amherst</div>
-    <div>Replay data: <code id="footRun"></code></div>
   </div>
 </footer>
 
@@ -169,7 +155,7 @@
 <script src="data/traj/index.js"></script>
 <script src="data/results.js"></script>
 <script src="js/main.js"></script>
+<script src="js/results-viz.js"></script>
 <script src="js/hero-anim-v2.js"></script>
-<script src="js/tldr-dragon.js"></script>
 </body>
 </html>

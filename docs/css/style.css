@@ -813,3 +813,8 @@ table.gs td { width: 40%; }
 .rp-ico { margin-right: 2px; }
 .rbody .lbl.vt > span:first-child { font-size: 11px; }
 @media (max-width: 760px) { .ptag { font-size: 8.5px; padding: 1px 5px; right: 2px; top: -9px; } }
+
+/* UMass Amherst logo next to the affiliation (figures/umass-logo.svg or .png) */
+.affil { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.affil-logo { display: inline-flex; }
+.affil-logo img { height: 40px; width: auto; display: block; }

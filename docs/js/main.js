@@ -98,7 +98,6 @@
     <div class="gp-top"><span class="blk-lab">Choose a game</span><button class="setup-btn" id="setupBtn" type="button">ⓘ Game setup</button></div>
     <div class="game-pick" id="gamePick"></div>
     <div class="gp-legend"><span><i class="gp-sw gp-deal"></i>deal</span><span><i class="gp-sw gp-nodeal"></i>no deal</span><span><i class="star-key sk-gap">★</i>one trusting holdout sank a deal everyone could accept</span></div>`;
-  $("#footRun").textContent = `${E.meta.run} · trajectory ${E.meta.trajectory}`;
 
   /* ------------------------------------------------------ trajectory chart */
   function drawTrajectory() {
@@ -600,6 +599,7 @@
   ];
   function drawFindings() {
     const grid = $("#findingsGrid");
+    if (!grid) return;
     for (const f of FINDINGS) {
       const rd = E.rounds[f.q.round - 1];
       const src = f.q.proposer ? rd.proposer_scratchpad : rd.votes.find((v) => v.agent === f.q.agent).scratchpad;
